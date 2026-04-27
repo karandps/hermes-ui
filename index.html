@@ -6,60 +6,217 @@
  <title>Hermes Control Center</title>
  <script src="https://telegram.org/js/telegram-web-app.js"></script>
  <style>
- body { font-family: sans-serif; background: #111; color: #eee; padding: 20px; text-align: center; }
- .card { background: #222; border-radius: 10px; padding: 15px; margin-bottom: 15px; border: 1px solid #333; }
- .card h3 { color: #0088cc; margin-top: 0; }
- .gauge-container { display: flex; justify-content: space-around; align-items: center; margin: 10px 0; }
- .gauge { text-align: center; }
- .gauge-value { font-size: 24px; font-weight: bold; }
- .gauge-label { font-size: 12px; color: #aaa; }
- .battery-value { color: #00ff00; }
- .ram-value { color: #ffa500; }
- button { background: #0088cc; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; width: 100%; font-size: 16px; }
+ body { 
+   font-family: sans-serif; 
+   background: #111; 
+   color: #eee; 
+   padding: 20px; 
+   text-align: center; 
+   margin: 0;
+ }
+ .card { 
+   background: #222; 
+   border-radius: 10px; 
+   padding: 20px; 
+   margin-bottom: 20px; 
+   border: 1px solid #333; 
+ }
+ .card h3 { 
+   color: #0088cc; 
+   margin-top: 0; 
+   font-size: 20px;
+ }
+ .sticky-brief {
+   background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+   border: 2px solid #0088cc;
+ }
+ .news-headline {
+   font-size: 18px;
+   font-weight: bold;
+   color: #fff;
+   margin: 15px 0;
+   line-height: 1.4;
+ }
+ .news-summary {
+   color: #ccc;
+   font-size: 14px;
+   margin: 10px 0;
+ }
+ .news-image {
+   max-width: 100%;
+   border-radius: 8px;
+   margin: 15px 0;
+   border: 1px solid #333;
+ }
+ .refresh-btn {
+   background: #28a745;
+   margin-top: 10px;
+ }
+ button { 
+   background: #0088cc; 
+   color: white; 
+   border: none; 
+   padding: 12px 24px; 
+   border-radius: 5px; 
+   cursor: pointer; 
+   width: 100%; 
+   font-size: 16px;
+   margin: 5px 0;
+ }
+ button:hover {
+   opacity: 0.9;
+ }
+ .energy-tracker {
+   display: flex;
+   justify-content: center;
+   gap: 10px;
+   margin: 15px 0;
+ }
+ .energy-btn {
+   width: 50px;
+   height: 50px;
+   border-radius: 50%;
+   font-size: 20px;
+   font-weight: bold;
+   transition: transform 0.2s;
+ }
+ .energy-btn:active {
+   transform: scale(0.9);
+ }
+ .energy-1 { background: #dc3545; }
+ .energy-2 { background: #fd7e14; }
+ .energy-3 { background: #ffc107; color: #000; }
+ .energy-4 { background: #28a745; }
+ .energy-5 { background: #00ff00; color: #000; }
  .status { color: #00ff00; font-weight: bold; }
- .challenge-text { font-size: 18px; font-weight: bold; color: #ffd700; margin: 10px 0; }
+ .last-updated {
+   font-size: 12px;
+   color: #888;
+   margin-top: 10px;
+ }
+ .challenge-text { 
+   font-size: 18px; 
+   font-weight: bold; 
+   color: #ffd700; 
+   margin: 15px 0;
+   padding: 10px;
+   background: rgba(255, 215, 0, 0.1);
+   border-radius: 5px;
+ }
  </style>
 </head>
 <body>
- <h2>Hermes Agent v1.0</h2>
+ <h2>🚀 Your Dashboard</h2>
+ 
+ <!-- Sticky Daily Brief Section -->
+ <div class="card sticky-brief" id="daily-brief">
+   <h3>📰 Sticky Daily Brief</h3>
+   <div id="news-content">
+     <div class="news-headline" id="headline">Loading latest news...</div>
+     <div class="news-summary" id="summary"></div>
+     <img id="headline-screenshot" class="news-image" style="display:none;" alt="News screenshot">
+     <div class="last-updated" id="last-updated"></div>
+   </div>
+   <button class="refresh-btn" onclick="refreshNews()">🔄 Refresh News</button>
+ </div>
+
+ <!-- Energy & Mood Tracker -->
  <div class="card">
- <p>System Status: <span class="status">Online</span></p>
- <p>Device: ThinkPad T520 (8GB)</p>
- <div class="gauge-container">
- <div class="gauge">
- <div class="gauge-value battery-value" id="battery-level">97%</div>
- <div class="gauge-label">Battery</div>
+   <h3>⚡ Energy & Mood Tracker</h3>
+   <p>How are you feeling right now?</p>
+   <div class="energy-tracker">
+     <button class="energy-btn energy-1" onclick="logEnergy(1)">1</button>
+     <button class="energy-btn energy-2" onclick="logEnergy(2)">2</button>
+     <button class="energy-btn energy-3" onclick="logEnergy(3)">3</button>
+     <button class="energy-btn energy-4" onclick="logEnergy(4)">4</button>
+     <button class="energy-btn energy-5" onclick="logEnergy(5)">5</button>
+   </div>
+   <p style="font-size: 12px; color: #888;">Tap to log to bio_log.txt</p>
  </div>
- <div class="gauge">
- <div class="gauge-value ram-value" id="ram-usage">51%</div>
- <div class="gauge-label">RAM Usage</div>
- </div>
- </div>
- </div>
+
+ <!-- Social Skills Card -->
  <div class="card">
- <h3>Daily Brief</h3>
- <p>Your personalized news and updates</p>
- <button onclick="getJLLNews()">Get JLL News</button>
+   <h3>🎯 Social Skills</h3>
+   <p>Challenge of the Day</p>
+   <div class="challenge-text">Listen 80%, Talk 20%</div>
  </div>
+
+ <!-- JLL News Button -->
  <div class="card">
- <h3>Social Skills</h3>
- <p>Challenge of the Day</p>
- <div class="challenge-text">Listen 80%, Talk 20%</div>
+   <h3>🏢 Daily Brief</h3>
+   <p>Your personalized news and updates</p>
+   <button onclick="triggerJLLNews()">Get JLL News</button>
  </div>
+
  <button onclick="Telegram.WebApp.close()">Close Dashboard</button>
+
  <script>
  Telegram.WebApp.ready();
  Telegram.WebApp.expand();
- 
- function getJLLNews() {
- // Trigger JLL news fetch - sends /summarize_jll command
- Telegram.WebApp.showPopup({
- title: 'JLL News',
- message: 'Fetching latest JLL and CRE news with AI updates...',
- buttons: [{type: 'ok'}]
+
+ // Load news on page load
+ document.addEventListener('DOMContentLoaded', function() {
+   loadNewsData();
  });
- // Send the /summarize_jll command to Telegram bot
- Telegram.WebApp.sendData('/summarize_jll');
+
+ function loadNewsData() {
+   // Fetch news data from JSON file
+   fetch('jll_news_data.json?' + new Date().getTime())
+     .then(response => response.json())
+     .then(data => {
+       document.getElementById('headline').textContent = data.headline || 'No news available';
+       document.getElementById('summary').textContent = data.summary || '';
+       document.getElementById('last-updated').textContent = 'Last updated: ' + (data.timestamp || 'Unknown');
+       
+       if (data.screenshot_path) {
+         const img = document.getElementById('headline-screenshot');
+         img.src = data.screenshot_path;
+         img.style.display = 'block';
+       }
+     })
+     .catch(error => {
+       console.log('No cached news, click "Get JLL News" to fetch');
+       document.getElementById('headline').textContent = 'Click "Get JLL News" to fetch latest updates';
+     });
+ }
+
+ function refreshNews() {
+   triggerJLLNews();
+ }
+
+ function triggerJLLNews() {
+   Telegram.WebApp.showPopup({
+     title: 'JLL News',
+     message: 'Fetching latest JLL and CRE news with AI updates...',
+     buttons: [{type: 'ok'}]
+   });
+   // Send the /summarize_jll command to Telegram bot
+   Telegram.WebApp.sendData('/summarize_jll');
+   // Reload news data after a delay
+   setTimeout(loadNewsData, 2000);
+ }
+
+ function logEnergy(level) {
+   const notes = {
+     1: "Very low energy",
+     2: "Low energy",
+     3: "Moderate energy",
+     4: "Good energy",
+     5: "Excellent energy"
+   };
+   
+   Telegram.WebApp.showPopup({
+     title: 'Energy Logged',
+     message: `You logged energy level ${level}/5 - ${notes[level]}`,
+     buttons: [{type: 'ok'}]
+   });
+   
+   // Send data to log
+   Telegram.WebApp.sendData(\`/log_energy ${level}\`);
+   
+   // Also log locally via script
+   fetch(\`/home/karan/hermes-ui/bio_log.py?level=${level}\`)
+     .catch(e => console.log('Local log pending'));
  }
  </script>
 </body>
