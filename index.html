@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hermes Control Center</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <style>
+        body { font-family: sans-serif; background: #111; color: #eee; padding: 20px; text-align: center; }
+        .card { background: #222; border-radius: 10px; padding: 15px; margin-bottom: 15px; border: 1px solid #333; }
+        button { background: #0088cc; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; width: 100%; font-size: 16px; }
+        .status { color: #00ff00; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h2>Hermes Agent v1.0</h2>
+    <div class="card">
+        <p>System Status: <span class="status">Online</span></p>
+        <p>Device: ThinkPad T520 (8GB)</p>
+    </div>
+    <button onclick="Telegram.WebApp.close()">Close Dashboard</button>
+    <script>
+        Telegram.WebApp.ready();
+        Telegram.WebApp.expand();
+    </script>
+</body>
+</html>
