@@ -1,29 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hermes Control Center</title>
-    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Hermes Control Center</title>
+ <script src="https://telegram.org/js/telegram-web-app.js"></script>
  <style>
  body { font-family: sans-serif; background: #111; color: #eee; padding: 20px; text-align: center; }
  .card { background: #222; border-radius: 10px; padding: 15px; margin-bottom: 15px; border: 1px solid #333; }
  .card h3 { color: #0088cc; margin-top: 0; }
+ .gauge-container { display: flex; justify-content: space-around; align-items: center; margin: 10px 0; }
+ .gauge { text-align: center; }
+ .gauge-value { font-size: 24px; font-weight: bold; }
+ .gauge-label { font-size: 12px; color: #aaa; }
+ .battery-value { color: #00ff00; }
+ .ram-value { color: #ffa500; }
  button { background: #0088cc; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; width: 100%; font-size: 16px; }
  .status { color: #00ff00; font-weight: bold; }
+ .challenge-text { font-size: 18px; font-weight: bold; color: #ffd700; margin: 10px 0; }
  </style>
 </head>
 <body>
-    <h2>Hermes Agent v1.0</h2>
+ <h2>Hermes Agent v1.0</h2>
  <div class="card">
  <p>System Status: <span class="status">Online</span></p>
  <p>Device: ThinkPad T520 (8GB)</p>
- <p>Battery Level: <span class="status">97%</span></p>
+ <div class="gauge-container">
+ <div class="gauge">
+ <div class="gauge-value battery-value" id="battery-level">97%</div>
+ <div class="gauge-label">Battery</div>
+ </div>
+ <div class="gauge">
+ <div class="gauge-value ram-value" id="ram-usage">51%</div>
+ <div class="gauge-label">RAM Usage</div>
+ </div>
+ </div>
  </div>
  <div class="card">
  <h3>Daily Brief</h3>
  <p>Your personalized news and updates</p>
  <button onclick="getJLLNews()">Get JLL News</button>
+ </div>
+ <div class="card">
+ <h3>Social Skills</h3>
+ <p>Challenge of the Day</p>
+ <div class="challenge-text">Listen 80%, Talk 20%</div>
  </div>
  <button onclick="Telegram.WebApp.close()">Close Dashboard</button>
  <script>
@@ -31,14 +52,14 @@
  Telegram.WebApp.expand();
  
  function getJLLNews() {
- // Trigger JLL news fetch - integrates with your daily brief workflow
+ // Trigger JLL news fetch - sends /summarize_jll command
  Telegram.WebApp.showPopup({
  title: 'JLL News',
  message: 'Fetching latest JLL and CRE news with AI updates...',
  buttons: [{type: 'ok'}]
  });
- // Send signal to Telegram bot to fetch news
- Telegram.WebApp.sendData('get_jll_news');
+ // Send the /summarize_jll command to Telegram bot
+ Telegram.WebApp.sendData('/summarize_jll');
  }
  </script>
 </body>
