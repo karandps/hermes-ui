@@ -168,11 +168,11 @@
        document.getElementById('summary').textContent = data.summary || '';
        document.getElementById('last-updated').textContent = 'Last updated: ' + (data.timestamp || 'Unknown');
        
-       if (data.screenshot_path) {
-         const img = document.getElementById('headline-screenshot');
-         img.src = data.screenshot_path;
-         img.style.display = 'block';
-       }
+ if (data.screenshot_path) {
+ const img = document.getElementById('headline-screenshot');
+ img.src = data.screenshot_path.startsWith('http') ? data.screenshot_path : data.screenshot_path;
+ img.style.display = 'block';
+ }
      })
      .catch(error => {
        console.log('No cached news, click "Get JLL News" to fetch');

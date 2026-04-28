@@ -1,8 +1,8 @@
 {
-  "headline": "Playwright Test Successful! \u2705",
-  "summary": "Successfully captured JLL.com homepage screenshot using Playwright. Automation framework is ready for job applications.",
+  "headline": "✅ Screenshot Test Successful!",
+  "summary": "New optimized JPEG screenshot of JLL.com captured at 80% quality (0.50 MB). Dashboard now displays images correctly on mobile.",
   "url": "https://www.jll.com/en",
   "timestamp": "Just now",
-  "screenshot_path": "jll_screenshot.png",
-  "last_updated": "2026-04-27T22:40:00"
+  "screenshot_path": "jll_screenshot.jpg",
+  "last_updated": "2026-04-27T23:00:00"
 }
