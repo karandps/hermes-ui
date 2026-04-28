@@ -1,13 +1,13 @@
 {
-  "headline": "✅ Dashboard & Brief Updated!",
-  "summary": "Daily brief system is now fully operational. Sleep: 6.8 hrs (11:10 PM - 6:00 AM). Next AI Meetup: Apr 30.",
+  "headline": "✅ Dashboard Operational",
+  "summary": "Public dashboard for JLL/AI news and event tracking. Updated daily.",
   "url": "https://github.com/karandps/hermes-ui",
-  "timestamp": "2026-04-28 07:17 AM",
+  "timestamp": "2026-04-28 07:30 AM",
   "screenshot_path": "jll_screenshot.jpg",
-  "last_updated": "2026-04-28T07:17:00",
+  "last_updated": "2026-04-28T07:30:00",
   "brief": {
-    "sleep": "😴 6.8 hrs (11:10 PM - 6:00 AM) - Good quality!",
-    "focus": "💡 Complete JLL automation, Review sleep patterns, Fix dashboard",
-    "events": "📅 AI Meetup (Apr 30), Robotics Expo (May 7), Bollywood Social (May 1)"
+    "sleep": "😴 Data stored locally (Private)",
+    "focus": "💡 Check laptop for personal brief",
+    "events": "📅 See full calendar on laptop"
   }
 }
