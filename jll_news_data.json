@@ -1,8 +1,8 @@
 {
-  "headline": "Welcome! Click 'Get JLL News' to fetch latest updates",
-  "summary": "Your personalized JLL and AI news brief will appear here.",
-  "url": "",
-  "timestamp": "2026-04-27 12:36",
-  "screenshot_path": null,
-  "last_updated": "2026-04-27T12:36:31.266919"
+  "headline": "Playwright Test Successful! \u2705",
+  "summary": "Successfully captured JLL.com homepage screenshot using Playwright. Automation framework is ready for job applications.",
+  "url": "https://www.jll.com/en",
+  "timestamp": "Just now",
+  "screenshot_path": "jll_screenshot.png",
+  "last_updated": "2026-04-27T22:40:00"
 }
