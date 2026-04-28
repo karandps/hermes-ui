@@ -110,14 +110,25 @@
  
  <!-- Sticky Daily Brief Section -->
  <div class="card sticky-brief" id="daily-brief">
-   <h3>📰 Sticky Daily Brief</h3>
-   <div id="news-content">
-     <div class="news-headline" id="headline">Loading latest news...</div>
-     <div class="news-summary" id="summary"></div>
-     <img id="headline-screenshot" class="news-image" style="display:none;" alt="News screenshot">
-     <div class="last-updated" id="last-updated"></div>
-   </div>
-   <button class="refresh-btn" onclick="refreshNews()">🔄 Refresh News</button>
+ <h3>📰 Sticky Daily Brief</h3>
+ <div id="news-content">
+ <div class="news-headline" id="headline">Loading latest news...</div>
+ <div class="news-summary" id="summary"></div>
+ <img id="headline-screenshot" class="news-image" style="display:none;" alt="News screenshot">
+ <div class="last-updated" id="last-updated"></div>
+ </div>
+ <button class="refresh-btn" onclick="refreshNews()">🔄 Refresh News</button>
+ </div>
+ 
+ <!-- Today's Brief Section -->
+ <div class="card" id="todays-brief">
+ <h3>🌅 Today's Brief</h3>
+ <div id="brief-content">
+ <p id="brief-sleep">😴 Sleep: Loading...</p>
+ <p id="brief-focus">💡 Focus: Loading...</p>
+ <p id="brief-events">📅 Events: Loading...</p>
+ </div>
+ <button class="refresh-btn" onclick="loadBriefData()">🔄 Refresh Brief</button>
  </div>
 
  <!-- Energy & Mood Tracker -->
@@ -154,69 +165,84 @@
  Telegram.WebApp.ready();
  Telegram.WebApp.expand();
 
- // Load news on page load
+ // Load news and brief on page load
  document.addEventListener('DOMContentLoaded', function() {
-   loadNewsData();
+ loadNewsData();
+ loadBriefData();
  });
 
  function loadNewsData() {
-   // Fetch news data from JSON file
-   fetch('jll_news_data.json?' + new Date().getTime())
-     .then(response => response.json())
-     .then(data => {
-       document.getElementById('headline').textContent = data.headline || 'No news available';
-       document.getElementById('summary').textContent = data.summary || '';
-       document.getElementById('last-updated').textContent = 'Last updated: ' + (data.timestamp || 'Unknown');
-       
+ // Fetch news data from JSON file
+ fetch('jll_news_data.json?' + new Date().getTime())
+ .then(response => response.json())
+ .then(data => {
+ document.getElementById('headline').textContent = data.headline || 'No news available';
+ document.getElementById('summary').textContent = data.summary || '';
+ document.getElementById('last-updated').textContent = 'Last updated: ' + (data.timestamp || 'Unknown');
+ 
  if (data.screenshot_path) {
  const img = document.getElementById('headline-screenshot');
  img.src = data.screenshot_path.startsWith('http') ? data.screenshot_path : data.screenshot_path;
  img.style.display = 'block';
  }
-     })
-     .catch(error => {
-       console.log('No cached news, click "Get JLL News" to fetch');
-       document.getElementById('headline').textContent = 'Click "Get JLL News" to fetch latest updates';
-     });
+ })
+ .catch(error => {
+ console.log('No cached news, click "Get JLL News" to fetch');
+ document.getElementById('headline').textContent = 'Click "Get JLL News" to fetch latest updates';
+ });
+ }
+
+ function loadBriefData() {
+ // Load brief data from JSON
+ fetch('jll_news_data.json?' + new Date().getTime())
+ .then(response => response.json())
+ .then(data => {
+ if (data.brief) {
+ document.getElementById('brief-sleep').textContent = data.brief.sleep || '😴 Sleep data loading...';
+ document.getElementById('brief-focus').textContent = '💡 Focus: ' + (data.brief.focus || 'Loading...');
+ document.getElementById('brief-events').textContent = data.brief.events || '📅 Events loading...';
+ }
+ })
+ .catch(error => console.log('Brief data pending'));
  }
 
  function refreshNews() {
-   triggerJLLNews();
+ triggerJLLNews();
  }
 
  function triggerJLLNews() {
-   Telegram.WebApp.showPopup({
-     title: 'JLL News',
-     message: 'Fetching latest JLL and CRE news with AI updates...',
-     buttons: [{type: 'ok'}]
-   });
-   // Send the /summarize_jll command to Telegram bot
-   Telegram.WebApp.sendData('/summarize_jll');
-   // Reload news data after a delay
-   setTimeout(loadNewsData, 2000);
+ Telegram.WebApp.showPopup({
+ title: 'JLL News',
+ message: 'Fetching latest JLL and CRE news with AI updates...',
+ buttons: [{type: 'ok'}]
+ });
+ // Send the /summarize_jll command to Telegram bot
+ Telegram.WebApp.sendData('/summarize_jll');
+ // Reload news data after a delay
+ setTimeout(loadNewsData, 2000);
  }
 
  function logEnergy(level) {
-   const notes = {
-     1: "Very low energy",
-     2: "Low energy",
-     3: "Moderate energy",
-     4: "Good energy",
-     5: "Excellent energy"
-   };
-   
-   Telegram.WebApp.showPopup({
-     title: 'Energy Logged',
-     message: `You logged energy level ${level}/5 - ${notes[level]}`,
-     buttons: [{type: 'ok'}]
-   });
-   
-   // Send data to log
-   Telegram.WebApp.sendData(\`/log_energy ${level}\`);
-   
-   // Also log locally via script
-   fetch(\`/home/karan/hermes-ui/bio_log.py?level=${level}\`)
-     .catch(e => console.log('Local log pending'));
+ const notes = {
+ 1: "Very low energy",
+ 2: "Low energy",
+ 3: "Moderate energy",
+ 4: "Good energy",
+ 5: "Excellent energy"
+ };
+ 
+ Telegram.WebApp.showPopup({
+ title: 'Energy Logged',
+ message: `You logged energy level ${level}/5 - ${notes[level]}`,
+ buttons: [{type: 'ok'}]
+ });
+ 
+ // Send data to log
+ Telegram.WebApp.sendData(`/log_energy ${level}`);
+ 
+ // Also log locally via script
+ fetch(`/home/karan/hermes-ui/bio_log.py?level=${level}`)
+ .catch(e => console.log('Local log pending'));
  }
  </script>
 </body>
