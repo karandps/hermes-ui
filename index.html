@@ -1,249 +1,257 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
- <meta charset="UTF-8">
- <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <title>Hermes Control Center</title>
- <script src="https://telegram.org/js/telegram-web-app.js"></script>
- <style>
- body { 
-   font-family: sans-serif; 
-   background: #111; 
-   color: #eee; 
-   padding: 20px; 
-   text-align: center; 
-   margin: 0;
- }
- .card { 
-   background: #222; 
-   border-radius: 10px; 
-   padding: 20px; 
-   margin-bottom: 20px; 
-   border: 1px solid #333; 
- }
- .card h3 { 
-   color: #0088cc; 
-   margin-top: 0; 
-   font-size: 20px;
- }
- .sticky-brief {
-   background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-   border: 2px solid #0088cc;
- }
- .news-headline {
-   font-size: 18px;
-   font-weight: bold;
-   color: #fff;
-   margin: 15px 0;
-   line-height: 1.4;
- }
- .news-summary {
-   color: #ccc;
-   font-size: 14px;
-   margin: 10px 0;
- }
- .news-image {
-   max-width: 100%;
-   border-radius: 8px;
-   margin: 15px 0;
-   border: 1px solid #333;
- }
- .refresh-btn {
-   background: #28a745;
-   margin-top: 10px;
- }
- button { 
-   background: #0088cc; 
-   color: white; 
-   border: none; 
-   padding: 12px 24px; 
-   border-radius: 5px; 
-   cursor: pointer; 
-   width: 100%; 
-   font-size: 16px;
-   margin: 5px 0;
- }
- button:hover {
-   opacity: 0.9;
- }
- .energy-tracker {
-   display: flex;
-   justify-content: center;
-   gap: 10px;
-   margin: 15px 0;
- }
- .energy-btn {
-   width: 50px;
-   height: 50px;
-   border-radius: 50%;
-   font-size: 20px;
-   font-weight: bold;
-   transition: transform 0.2s;
- }
- .energy-btn:active {
-   transform: scale(0.9);
- }
- .energy-1 { background: #dc3545; }
- .energy-2 { background: #fd7e14; }
- .energy-3 { background: #ffc107; color: #000; }
- .energy-4 { background: #28a745; }
- .energy-5 { background: #00ff00; color: #000; }
- .status { color: #00ff00; font-weight: bold; }
- .last-updated {
-   font-size: 12px;
-   color: #888;
-   margin-top: 10px;
- }
- .challenge-text { 
-   font-size: 18px; 
-   font-weight: bold; 
-   color: #ffd700; 
-   margin: 15px 0;
-   padding: 10px;
-   background: rgba(255, 215, 0, 0.1);
-   border-radius: 5px;
- }
- </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hermes Control Center</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <style>
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; 
+            background: #0f0f0f; 
+            color: #e0e0e0; 
+            padding: 15px; 
+            text-align: center; 
+            margin: 0;
+        }
+        .container { max-width: 600px; margin: 0 auto; }
+        .card { 
+            background: #1a1a1a; 
+            border-radius: 12px; 
+            padding: 20px; 
+            margin-bottom: 15px; 
+            border: 1px solid #2a2a2a;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        }
+        .card h3 { 
+            color: #0088cc; 
+            margin-top: 0; 
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        .sticky-brief {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            border: 2px solid #0088cc;
+        }
+        .roadmap-item {
+            background: #252525;
+            padding: 10px;
+            margin: 8px 0;
+            border-radius: 6px;
+            text-align: left;
+            border-left: 3px solid #0088cc;
+        }
+        .roadmap-item.high { border-left-color: #ff4444; }
+        .roadmap-item.medium { border-left-color: #ffbb33; }
+        .roadmap-item.active { border-left-color: #00cc66; }
+        .btn {
+            background: #0088cc;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            margin: 5px;
+            width: 100%;
+            max-width: 200px;
+        }
+        .btn:active { background: #006699; }
+        .btn-secondary { background: #444; }
+        .btn-secondary:active { background: #555; }
+        .metric {
+            display: inline-block;
+            margin: 10px;
+            padding: 10px 15px;
+            background: #252525;
+            border-radius: 8px;
+            min-width: 80px;
+        }
+        .metric-value {
+            font-size: 24px;
+            font-weight: bold;
+            color: #0088cc;
+        }
+        .metric-label {
+            font-size: 12px;
+            color: #888;
+        }
+        .challenge {
+            background: #1a2f2f;
+            border-left: 3px solid #00cc66;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 6px;
+            text-align: left;
+        }
+        .event-item {
+            background: #2f1a1a;
+            border-left: 3px solid #ff6b6b;
+            padding: 10px;
+            margin: 8px 0;
+            border-radius: 6px;
+            text-align: left;
+        }
+        .model-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: bold;
+            margin: 2px;
+        }
+        .model-1 { background: #ffd700; color: #000; }
+        .model-2 { background: #c0c0c0; color: #000; }
+        .model-3 { background: #cd7f32; color: #000; }
+        .hidden { display: none; }
+        .timestamp {
+            font-size: 11px;
+            color: #666;
+            margin-top: 10px;
+        }
+    </style>
 </head>
 <body>
- <h2>🚀 Your Dashboard</h2>
- 
- <!-- Sticky Daily Brief Section -->
- <div class="card sticky-brief" id="daily-brief">
- <h3>📰 Sticky Daily Brief</h3>
- <div id="news-content">
- <div class="news-headline" id="headline">Loading latest news...</div>
- <div class="news-summary" id="summary"></div>
- <img id="headline-screenshot" class="news-image" style="display:none;" alt="News screenshot">
- <div class="last-updated" id="last-updated"></div>
- </div>
- <button class="refresh-btn" onclick="refreshNews()">🔄 Refresh News</button>
- </div>
- 
- <!-- Today's Brief Section -->
- <div class="card" id="todays-brief">
- <h3>🌅 Today's Brief</h3>
- <div id="brief-content">
- <p id="brief-sleep">😴 Sleep: Loading...</p>
- <p id="brief-focus">💡 Focus: Loading...</p>
- <p id="brief-events">📅 Events: Loading...</p>
- </div>
- <button class="refresh-btn" onclick="loadBriefData()">🔄 Refresh Brief</button>
- </div>
+    <div class="container">
+        <!-- Daily Brief Pro Card -->
+        <div class="card sticky-brief">
+            <h3>🌅 Daily Brief Pro</h3>
+            <div id="brief-content">
+                <p style="color: #aaa;">Loading today's brief...</p>
+            </div>
+            <div>
+                <button class="btn" onclick="sendData('/get_pro_brief')">📥 Get Pro Brief</button>
+                <button class="btn btn-secondary" onclick="toggleModelEval()">📊 Model Eval</button>
+            </div>
+            <div id="model-eval-section" class="hidden" style="margin-top: 15px; text-align: left;">
+                <h4 style="color: #0088cc; margin-bottom: 10px;">Weekly Model Evaluation</h4>
+                <div id="model-rankings"></div>
+                <p style="font-size: 12px; color: #888; margin-top: 10px;">Next evaluation: Saturday 10 AM</p>
+            </div>
+        </div>
 
- <!-- Energy & Mood Tracker -->
- <div class="card">
-   <h3>⚡ Energy & Mood Tracker</h3>
-   <p>How are you feeling right now?</p>
-   <div class="energy-tracker">
-     <button class="energy-btn energy-1" onclick="logEnergy(1)">1</button>
-     <button class="energy-btn energy-2" onclick="logEnergy(2)">2</button>
-     <button class="energy-btn energy-3" onclick="logEnergy(3)">3</button>
-     <button class="energy-btn energy-4" onclick="logEnergy(4)">4</button>
-     <button class="energy-btn energy-5" onclick="logEnergy(5)">5</button>
-   </div>
-   <p style="font-size: 12px; color: #888;">Tap to log to bio_log.txt</p>
- </div>
+        <!-- Automation Roadmap -->
+        <div class="card">
+            <h3>🤖 Automation Roadmap</h3>
+            <div class="roadmap-item high">
+                <strong>Google OAuth Setup</strong><br>
+                <span style="color: #ffbb33;">🟡 In Progress</span> - Priority: HIGH
+            </div>
+            <div class="roadmap-item active">
+                <strong>Daily Briefs (Pro)</strong><br>
+                <span style="color: #00cc66;">✅ Active</span> - Priority: HIGH
+            </div>
+            <div class="roadmap-item medium">
+                <strong>Azara AI Workflow</strong><br>
+                <span style="color: #ffbb33;">⏳ Pending</span> - Due: May 10
+            </div>
+            <div class="roadmap-item medium">
+                <strong>Personal CRM</strong><br>
+                <span style="color: #ffbb33;">⏳ Pending</span> - Priority: HIGH
+            </div>
+        </div>
 
- <!-- Social Skills Card -->
- <div class="card">
-   <h3>🎯 Social Skills</h3>
-   <p>Challenge of the Day</p>
-   <div class="challenge-text">Listen 80%, Talk 20%</div>
- </div>
+        <!-- Personal Section -->
+        <div class="card">
+            <h3>🧠 Personal</h3>
+            <div class="challenge">
+                <strong>Today's Challenge:</strong><br>
+                <span id="daily-challenge">Initiate one conversation with a stranger about their work.</span>
+            </div>
+            <div style="margin: 15px 0;">
+                <strong>Log Energy:</strong><br>
+                <button class="btn btn-secondary" style="width: auto; padding: 8px 15px;" onclick="sendData('/energy_high')">High ⚡</button>
+                <button class="btn btn-secondary" style="width: auto; padding: 8px 15px;" onclick="sendData('/energy_medium')">Medium 🔋</button>
+                <button class="btn btn-secondary" style="width: auto; padding: 8px 15px;" onclick="sendData('/energy_low')">Low 🔋</button>
+            </div>
+            <div>
+                <strong>Local Events (15+ RSVPs):</strong>
+                <div class="event-item">
+                    <strong>UX Mixer @ Sports Page</strong><br>
+                    Today 6:00 PM, Palo Alto - 40 RSVPs
+                </div>
+                <div class="event-item">
+                    <strong>AI Startup Mixer</strong><br>
+                    Today 7:00 PM, Mountain View - 25 RSVPs
+                </div>
+            </div>
+        </div>
 
- <!-- JLL News Button -->
- <div class="card">
-   <h3>🏢 Daily Brief</h3>
-   <p>Your personalized news and updates</p>
-   <button onclick="triggerJLLNews()">Get JLL News</button>
- </div>
+        <!-- System Metrics -->
+        <div class="card">
+            <h3>💻 System</h3>
+            <div class="metric">
+                <div class="metric-value" id="ram-usage">--</div>
+                <div class="metric-label">RAM</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value" id="cpu-usage">--</div>
+                <div class="metric-label">CPU</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value" id="battery-level">--</div>
+                <div class="metric-label">Battery</div>
+            </div>
+            <div>
+                <button class="btn btn-secondary" onclick="refreshMetrics()">🔄 Refresh</button>
+            </div>
+            <p class="timestamp">Last updated: <span id="last-update">--</span></p>
+        </div>
+    </div>
 
- <button onclick="Telegram.WebApp.close()">Close Dashboard</button>
+    <script>
+        const tg = window.Telegram.WebApp;
+        tg.expand();
 
- <script>
- Telegram.WebApp.ready();
- Telegram.WebApp.expand();
+        function sendData(command) {
+            tg.sendData(command);
+        }
 
- // Load news and brief on page load
- document.addEventListener('DOMContentLoaded', function() {
- loadNewsData();
- loadBriefData();
- });
+        function toggleModelEval() {
+            const section = document.getElementById('model-eval-section');
+            section.classList.toggle('hidden');
+            if (!section.classList.contains('hidden')) {
+                loadModelEval();
+            }
+        }
 
- function loadNewsData() {
- // Fetch news data from JSON file
- fetch('jll_news_data.json?' + new Date().getTime())
- .then(response => response.json())
- .then(data => {
- document.getElementById('headline').textContent = data.headline || 'No news available';
- document.getElementById('summary').textContent = data.summary || '';
- document.getElementById('last-updated').textContent = 'Last updated: ' + (data.timestamp || 'Unknown');
- 
- if (data.screenshot_path) {
- const img = document.getElementById('headline-screenshot');
- img.src = data.screenshot_path.startsWith('http') ? data.screenshot_path : data.screenshot_path;
- img.style.display = 'block';
- }
- })
- .catch(error => {
- console.log('No cached news, click "Get JLL News" to fetch');
- document.getElementById('headline').textContent = 'Click "Get JLL News" to fetch latest updates';
- });
- }
+        function loadModelEval() {
+            // Simulated model rankings (will be replaced with real data from backend)
+            const models = [
+                { name: "Claude Sonnet 4.6", score: 98, strength: "OAuth/CAPTCHA" },
+                { name: "Qwen3.5-397B", score: 97, strength: "Code Execution" },
+                { name: "DeepSeek V4", score: 91, strength: "General Logic" }
+            ];
+            
+            let html = '';
+            models.forEach((m, i) => {
+                const badge = i === 0 ? 'model-1' : i === 1 ? 'model-2' : 'model-3';
+                const medal = i === 0 ? '🥇' : i === 1 ? '🥈' : '🥉';
+                html += `<div style="margin: 8px 0;">
+                    <span class="model-badge ${badge}">${medal} ${m.name} (${m.score}%)</span><br>
+                    <small style="color: #aaa;">${m.strength}</small>
+                </div>`;
+            });
+            document.getElementById('model-rankings').innerHTML = html;
+        }
 
- function loadBriefData() {
- // Load brief data from JSON
- fetch('jll_news_data.json?' + new Date().getTime())
- .then(response => response.json())
- .then(data => {
- if (data.brief) {
- document.getElementById('brief-sleep').textContent = data.brief.sleep || '😴 Sleep data loading...';
- document.getElementById('brief-focus').textContent = '💡 Focus: ' + (data.brief.focus || 'Loading...');
- document.getElementById('brief-events').textContent = data.brief.events || '📅 Events loading...';
- }
- })
- .catch(error => console.log('Brief data pending'));
- }
+        function refreshMetrics() {
+            // Simulated metrics (will be replaced with real data)
+            document.getElementById('ram-usage').textContent = '4.2 GB';
+            document.getElementById('cpu-usage').textContent = '23%';
+            document.getElementById('battery-level').textContent = '87%';
+            document.getElementById('last-update').textContent = new Date().toLocaleTimeString();
+        }
 
- function refreshNews() {
- triggerJLLNews();
- }
-
- function triggerJLLNews() {
- Telegram.WebApp.showPopup({
- title: 'JLL News',
- message: 'Fetching latest JLL and CRE news with AI updates...',
- buttons: [{type: 'ok'}]
- });
- // Send the /summarize_jll command to Telegram bot
- Telegram.WebApp.sendData('/summarize_jll');
- // Reload news data after a delay
- setTimeout(loadNewsData, 2000);
- }
-
- function logEnergy(level) {
- const notes = {
- 1: "Very low energy",
- 2: "Low energy",
- 3: "Moderate energy",
- 4: "Good energy",
- 5: "Excellent energy"
- };
- 
- Telegram.WebApp.showPopup({
- title: 'Energy Logged',
- message: `You logged energy level ${level}/5 - ${notes[level]}`,
- buttons: [{type: 'ok'}]
- });
- 
- // Send data to log
- Telegram.WebApp.sendData(`/log_energy ${level}`);
- 
- // Also log locally via script
- fetch(`/home/karan/hermes-ui/bio_log.py?level=${level}`)
- .catch(e => console.log('Local log pending'));
- }
- </script>
+        // Load initial data
+        refreshMetrics();
+        
+        // Auto-refresh metrics every 30 seconds
+        setInterval(refreshMetrics, 30000);
+    </script>
 </body>
 </html>
