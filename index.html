@@ -32,9 +32,9 @@
             justify-content: center;
             gap: 8px;
         }
-        .sticky-brief {
+        .status-card {
             background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            border: 2px solid #0088cc;
+            border: 2px solid #00cc66;
         }
         .roadmap-item {
             background: #252525;
@@ -47,22 +47,6 @@
         .roadmap-item.high { border-left-color: #ff4444; }
         .roadmap-item.medium { border-left-color: #ffbb33; }
         .roadmap-item.active { border-left-color: #00cc66; }
-        .btn {
-            background: #0088cc;
-            color: white;
-            border: none;
-            padding: 12px 20px;
-            border-radius: 8px;
-            font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
-            margin: 5px;
-            width: 100%;
-            max-width: 200px;
-        }
-        .btn:active { background: #006699; }
-        .btn-secondary { background: #444; }
-        .btn-secondary:active { background: #555; }
         .metric {
             display: inline-block;
             margin: 10px;
@@ -82,24 +66,31 @@
             color: #aaa;
         }
         .hidden { display: none; }
-        .alpha-card {
-            background: #1a1a2e;
-            border: 1px solid #444;
+        .btn {
+            background: #444;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            margin: 5px;
+            width: 100%;
+            max-width: 200px;
         }
-        .alpha-priority {
-            color: #ff4444;
-            font-weight: bold;
-        }
+        .btn:active { background: #555; }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- Daily Brief Pro Card -->
-        <div class="card sticky-brief">
-            <h3>📅 Daily Brief Pro</h3>
-            <p id="brief-status">Tap below to generate today's brief with JLL news, Alpha, and events.</p>
-            <button class="btn" onclick="getProBrief()">📥 Get Pro Brief</button>
-            <div id="brief-content" class="hidden" style="margin-top:15px; text-align:left; font-size:13px; white-space: pre-wrap;"></div>
+        <!-- Status Card (Replaces Daily Brief Button) -->
+        <div class="card status-card">
+            <h3>✅ System Status</h3>
+            <p style="font-size:14px;"><b>Dashboard:</b> Online<br><b>Daily Brief:</b> Scheduled (7:00 AM)<br><b>Google OAuth:</b> Waiting Restoration</p>
+            <p style="font-size:13px; color:#aaa; margin-top:10px;">
+                💡 <i>To get your brief now, just type "Run brief" in the chat.</i>
+            </p>
         </div>
 
         <!-- Automation Roadmap -->
@@ -107,7 +98,7 @@
             <h3>🤖 Automation Roadmap</h3>
             <div class="roadmap-item high">
                 <strong>Priority #1: Google OAuth Recovery</strong><br>
-                Wait for account restoration (2 business days). Prepare burner accounts.
+                Waiting for account restoration (2 business days). Prepare burner accounts.
             </div>
             <div class="roadmap-item active">
                 <strong>Active: Local Browser Agent</strong><br>
@@ -119,35 +110,13 @@
             </div>
         </div>
 
-        <!-- Agent Alpha Scan -->
-        <div class="card alpha-card">
-            <h3>🧠 Agent Alpha Scan</h3>
-            <p style="font-size:13px; color:#aaa;">Scanning X, LinkedIn, Reddit for Hermes/OpenClaw advantages...</p>
-            <div id="alpha-content" style="text-align:left; font-size:13px; margin-top:10px;">
-                <em>No new alpha found today. Check back tomorrow.</em>
-            </div>
-            <button class="btn btn-secondary" onclick="refreshAlpha()">🔄 Refresh Alpha</button>
-        </div>
-
         <!-- Local Events -->
         <div class="card">
             <h3>📍 Local Events (Mountain View)</h3>
             <div id="events-content" style="text-align:left; font-size:13px;">
                 <em>Loading events...</em>
             </div>
-            <button class="btn btn-secondary" onclick="loadEvents()">🔄 Refresh Events</button>
-        </div>
-
-        <!-- Model Evaluation (Saturday Only) -->
-        <div class="card">
-            <h3>📊 Weekly Model Eval</h3>
-            <p style="font-size:13px;">Runs every Saturday at 10 AM.</p>
-            <button class="btn btn-secondary" onclick="toggleModelEval()">📊 View Latest Eval</button>
-            <div id="model-eval-section" class="hidden" style="margin-top:15px; text-align:left; font-size:13px;">
-                <p><strong>Top Model:</strong> Claude Sonnet 4.6 (98/100)</p>
-                <p><strong>Best For:</strong> OAuth/CAPTCHA handling</p>
-                <p><strong>Recommendation:</strong> Use for all login-heavy tasks.</p>
-            </div>
+            <button class="btn" onclick="loadEvents()">🔄 Refresh Events</button>
         </div>
 
         <!-- System Metrics -->
@@ -172,66 +141,25 @@
         const tg = window.Telegram.WebApp;
         tg.expand();
 
-        // --- Core Functions ---
-
-        // 1. Get Pro Brief (FIXED: Now sends command to backend)
-        function getProBrief() {
-            const statusEl = document.getElementById('brief-status');
-            const contentEl = document.getElementById('brief-content');
-            
-            statusEl.innerText = "⏳ Generating brief... (This may take 10-15s)";
-            contentEl.classList.add('hidden');
-            
-            // Send command to Telegram backend
-            tg.sendData('/get_pro_brief');
-            
-            // Note: The actual content will be pushed back by the bot as a message, 
-            // not loaded inline in this webview (simpler architecture).
-            setTimeout(() => {
-                statusEl.innerText = "✅ Brief requested! Check your chat for the full report.";
-            }, 2000);
-        }
-
-        // 2. Refresh Alpha (FIXED: Sends command)
-        function refreshAlpha() {
-            tg.sendData('/refresh_alpha');
-            const alphaEl = document.getElementById('alpha-content');
-            alphaEl.innerHTML = '<em>🔄 Scanning sources... Check chat for results.</em>';
-        }
-
-        // 3. Load Events (FIXED: Dynamic or Placeholder)
+        // Load Events (Placeholder)
         function loadEvents() {
-            // In a real implementation, this would fetch from a JSON file
-            // For now, we simulate a fetch or show placeholder
             const eventsEl = document.getElementById('events-content');
-            eventsEl.innerHTML = '<em>🔍 Scanning Meetup/Eventbite for 15+ RSVP events...</em>';
-            
-            // Simulate backend delay then show static fallback if no data
+            eventsEl.innerHTML = '<em>🔍 Scanning Meetup/Eventbrite...</em>';
             setTimeout(() => {
-                // This is where real data would go
-                eventsEl.innerHTML = '<p><strong>No new events found for today.</strong></p><p style="color:#aaa;">Try checking back later or expand your search radius.</p>';
+                eventsEl.innerHTML = '<p><strong>No new events found for today.</strong></p><p style="color:#aaa;">Check back later or expand search radius.</p>';
             }, 1000);
         }
 
-        // 4. Toggle Model Eval
-        function toggleModelEval() {
-            const section = document.getElementById('model-eval-section');
-            section.classList.toggle('hidden');
-        }
-
-        // 5. System Metrics (Mock for now)
+        // Mock Metrics
         function updateMetrics() {
-            // In production, this would call a local API
             document.getElementById('cpu-val').innerText = "12%";
             document.getElementById('ram-val').innerText = "4.2GB";
             document.getElementById('bat-val').innerText = "72%";
         }
 
-        // Initialize
         window.onload = function() {
             loadEvents();
             updateMetrics();
-            // Refresh metrics every 30s
             setInterval(updateMetrics, 30000);
         };
     </script>
