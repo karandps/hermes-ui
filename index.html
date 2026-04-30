@@ -155,7 +155,26 @@
             </div>
         </div>
 
-        <!-- Personal Section -->
+                <!-- Agent Alpha Scan Card -->
+        <div class="card" style="border-left: 3px solid #ffd700;">
+            <h3>🧠 Agent Alpha Scan</h3>
+            <p style="font-size: 12px; color: #888; margin-bottom: 15px;">
+                Scanning X, LinkedIn, GitHub for Hermes/OpenClaw advantage...
+            </p>
+            <div id="alpha-content">
+                <div style="background: #252525; padding: 12px; border-radius: 6px; margin-bottom: 10px; border-left: 3px solid #ff4444;">
+                    <strong style="color: #ffbb33;">TOP ALPHA:</strong><br>
+                    <span id="alpha-finding">Loading...</span>
+                </div>
+                <div style="text-align: left; padding: 10px; background: #1a2f2f; border-radius: 6px;">
+                    <strong>🎯 Your Priority Action:</strong><br>
+                    <span id="alpha-action" style="color: #00cc66;">Scanning...</span>
+                </div>
+            </div>
+            <button class="btn" style="margin-top: 10px;" onclick="sendData('/refresh_alpha')">🔄 Refresh Alpha</button>
+        </div>
+
+<!-- Personal Section -->
         <div class="card">
             <h3>🧠 Personal</h3>
             <div class="challenge">
