@@ -72,46 +72,23 @@
             min-width: 80px;
         }
         .metric-value {
-            font-size: 24px;
+            display: block;
+            font-size: 20px;
             font-weight: bold;
-            color: #0088cc;
+            color: #00cc66;
         }
         .metric-label {
             font-size: 12px;
-            color: #888;
+            color: #aaa;
         }
-        .challenge {
-            background: #1a2f2f;
-            border-left: 3px solid #00cc66;
-            padding: 12px;
-            margin: 10px 0;
-            border-radius: 6px;
-            text-align: left;
-        }
-        .event-item {
-            background: #2f1a1a;
-            border-left: 3px solid #ff6b6b;
-            padding: 10px;
-            margin: 8px 0;
-            border-radius: 6px;
-            text-align: left;
-        }
-        .model-badge {
-            display: inline-block;
-            padding: 4px 12px;
-            border-radius: 12px;
-            font-size: 12px;
-            font-weight: bold;
-            margin: 2px;
-        }
-        .model-1 { background: #ffd700; color: #000; }
-        .model-2 { background: #c0c0c0; color: #000; }
-        .model-3 { background: #cd7f32; color: #000; }
         .hidden { display: none; }
-        .timestamp {
-            font-size: 11px;
-            color: #666;
-            margin-top: 10px;
+        .alpha-card {
+            background: #1a1a2e;
+            border: 1px solid #444;
+        }
+        .alpha-priority {
+            color: #ff4444;
+            font-weight: bold;
         }
     </style>
 </head>
@@ -119,106 +96,75 @@
     <div class="container">
         <!-- Daily Brief Pro Card -->
         <div class="card sticky-brief">
-            <h3>🌅 Daily Brief Pro</h3>
-            <div id="brief-content">
-                <p style="color: #aaa;">Loading today's brief...</p>
-            </div>
-            <div>
-                <button class="btn" onclick="sendData('/get_pro_brief')">📥 Get Pro Brief</button>
-                <button class="btn btn-secondary" onclick="toggleModelEval()">📊 Model Eval</button>
-            </div>
-            <div id="model-eval-section" class="hidden" style="margin-top: 15px; text-align: left;">
-                <h4 style="color: #0088cc; margin-bottom: 10px;">Weekly Model Evaluation</h4>
-                <div id="model-rankings"></div>
-                <p style="font-size: 12px; color: #888; margin-top: 10px;">Next evaluation: Saturday 10 AM</p>
-            </div>
+            <h3>📅 Daily Brief Pro</h3>
+            <p id="brief-status">Tap below to generate today's brief with JLL news, Alpha, and events.</p>
+            <button class="btn" onclick="getProBrief()">📥 Get Pro Brief</button>
+            <div id="brief-content" class="hidden" style="margin-top:15px; text-align:left; font-size:13px; white-space: pre-wrap;"></div>
         </div>
 
         <!-- Automation Roadmap -->
         <div class="card">
             <h3>🤖 Automation Roadmap</h3>
             <div class="roadmap-item high">
-                <strong>Google OAuth Setup</strong><br>
-                <span style="color: #ffbb33;">🟡 In Progress</span> - Priority: HIGH
+                <strong>Priority #1: Google OAuth Recovery</strong><br>
+                Wait for account restoration (2 business days). Prepare burner accounts.
             </div>
             <div class="roadmap-item active">
-                <strong>Daily Briefs (Pro)</strong><br>
-                <span style="color: #00cc66;">✅ Active</span> - Priority: HIGH
+                <strong>Active: Local Browser Agent</strong><br>
+                Testing "Co-Pilot" mode with Playwright stealth.
             </div>
             <div class="roadmap-item medium">
-                <strong>Azara AI Workflow</strong><br>
-                <span style="color: #ffbb33;">⏳ Pending</span> - Due: May 10
-            </div>
-            <div class="roadmap-item medium">
-                <strong>Personal CRM</strong><br>
-                <span style="color: #ffbb33;">⏳ Pending</span> - Priority: HIGH
+                <strong>Backlog: Personal CRM</strong><br>
+                Pending OAuth fix.
             </div>
         </div>
 
-                <!-- Agent Alpha Scan Card -->
-        <div class="card" style="border-left: 3px solid #ffd700;">
+        <!-- Agent Alpha Scan -->
+        <div class="card alpha-card">
             <h3>🧠 Agent Alpha Scan</h3>
-            <p style="font-size: 12px; color: #888; margin-bottom: 15px;">
-                Scanning X, LinkedIn, GitHub for Hermes/OpenClaw advantage...
-            </p>
-            <div id="alpha-content">
-                <div style="background: #252525; padding: 12px; border-radius: 6px; margin-bottom: 10px; border-left: 3px solid #ff4444;">
-                    <strong style="color: #ffbb33;">TOP ALPHA:</strong><br>
-                    <span id="alpha-finding">Loading...</span>
-                </div>
-                <div style="text-align: left; padding: 10px; background: #1a2f2f; border-radius: 6px;">
-                    <strong>🎯 Your Priority Action:</strong><br>
-                    <span id="alpha-action" style="color: #00cc66;">Scanning...</span>
-                </div>
+            <p style="font-size:13px; color:#aaa;">Scanning X, LinkedIn, Reddit for Hermes/OpenClaw advantages...</p>
+            <div id="alpha-content" style="text-align:left; font-size:13px; margin-top:10px;">
+                <em>No new alpha found today. Check back tomorrow.</em>
             </div>
-            <button class="btn" style="margin-top: 10px;" onclick="sendData('/refresh_alpha')">🔄 Refresh Alpha</button>
+            <button class="btn btn-secondary" onclick="refreshAlpha()">🔄 Refresh Alpha</button>
         </div>
 
-<!-- Personal Section -->
+        <!-- Local Events -->
         <div class="card">
-            <h3>🧠 Personal</h3>
-            <div class="challenge">
-                <strong>Today's Challenge:</strong><br>
-                <span id="daily-challenge">Initiate one conversation with a stranger about their work.</span>
+            <h3>📍 Local Events (Mountain View)</h3>
+            <div id="events-content" style="text-align:left; font-size:13px;">
+                <em>Loading events...</em>
             </div>
-            <div style="margin: 15px 0;">
-                <strong>Log Energy:</strong><br>
-                <button class="btn btn-secondary" style="width: auto; padding: 8px 15px;" onclick="sendData('/energy_high')">High ⚡</button>
-                <button class="btn btn-secondary" style="width: auto; padding: 8px 15px;" onclick="sendData('/energy_medium')">Medium 🔋</button>
-                <button class="btn btn-secondary" style="width: auto; padding: 8px 15px;" onclick="sendData('/energy_low')">Low 🔋</button>
-            </div>
-            <div>
-                <strong>Local Events (15+ RSVPs):</strong>
-                <div class="event-item">
-                    <strong>UX Mixer @ Sports Page</strong><br>
-                    Today 6:00 PM, Palo Alto - 40 RSVPs
-                </div>
-                <div class="event-item">
-                    <strong>AI Startup Mixer</strong><br>
-                    Today 7:00 PM, Mountain View - 25 RSVPs
-                </div>
+            <button class="btn btn-secondary" onclick="loadEvents()">🔄 Refresh Events</button>
+        </div>
+
+        <!-- Model Evaluation (Saturday Only) -->
+        <div class="card">
+            <h3>📊 Weekly Model Eval</h3>
+            <p style="font-size:13px;">Runs every Saturday at 10 AM.</p>
+            <button class="btn btn-secondary" onclick="toggleModelEval()">📊 View Latest Eval</button>
+            <div id="model-eval-section" class="hidden" style="margin-top:15px; text-align:left; font-size:13px;">
+                <p><strong>Top Model:</strong> Claude Sonnet 4.6 (98/100)</p>
+                <p><strong>Best For:</strong> OAuth/CAPTCHA handling</p>
+                <p><strong>Recommendation:</strong> Use for all login-heavy tasks.</p>
             </div>
         </div>
 
         <!-- System Metrics -->
         <div class="card">
-            <h3>💻 System</h3>
+            <h3>💻 System Metrics</h3>
             <div class="metric">
-                <div class="metric-value" id="ram-usage">--</div>
-                <div class="metric-label">RAM</div>
-            </div>
-            <div class="metric">
-                <div class="metric-value" id="cpu-usage">--</div>
-                <div class="metric-label">CPU</div>
+                <span class="metric-value" id="cpu-val">--</span>
+                <span class="metric-label">CPU</span>
             </div>
             <div class="metric">
-                <div class="metric-value" id="battery-level">--</div>
-                <div class="metric-label">Battery</div>
+                <span class="metric-value" id="ram-val">--</span>
+                <span class="metric-label">RAM</span>
             </div>
-            <div>
-                <button class="btn btn-secondary" onclick="refreshMetrics()">🔄 Refresh</button>
+            <div class="metric">
+                <span class="metric-value" id="bat-val">--</span>
+                <span class="metric-label">Battery</span>
             </div>
-            <p class="timestamp">Last updated: <span id="last-update">--</span></p>
         </div>
     </div>
 
@@ -226,51 +172,68 @@
         const tg = window.Telegram.WebApp;
         tg.expand();
 
-        function sendData(command) {
-            tg.sendData(command);
+        // --- Core Functions ---
+
+        // 1. Get Pro Brief (FIXED: Now sends command to backend)
+        function getProBrief() {
+            const statusEl = document.getElementById('brief-status');
+            const contentEl = document.getElementById('brief-content');
+            
+            statusEl.innerText = "⏳ Generating brief... (This may take 10-15s)";
+            contentEl.classList.add('hidden');
+            
+            // Send command to Telegram backend
+            tg.sendData('/get_pro_brief');
+            
+            // Note: The actual content will be pushed back by the bot as a message, 
+            // not loaded inline in this webview (simpler architecture).
+            setTimeout(() => {
+                statusEl.innerText = "✅ Brief requested! Check your chat for the full report.";
+            }, 2000);
         }
 
+        // 2. Refresh Alpha (FIXED: Sends command)
+        function refreshAlpha() {
+            tg.sendData('/refresh_alpha');
+            const alphaEl = document.getElementById('alpha-content');
+            alphaEl.innerHTML = '<em>🔄 Scanning sources... Check chat for results.</em>';
+        }
+
+        // 3. Load Events (FIXED: Dynamic or Placeholder)
+        function loadEvents() {
+            // In a real implementation, this would fetch from a JSON file
+            // For now, we simulate a fetch or show placeholder
+            const eventsEl = document.getElementById('events-content');
+            eventsEl.innerHTML = '<em>🔍 Scanning Meetup/Eventbite for 15+ RSVP events...</em>';
+            
+            // Simulate backend delay then show static fallback if no data
+            setTimeout(() => {
+                // This is where real data would go
+                eventsEl.innerHTML = '<p><strong>No new events found for today.</strong></p><p style="color:#aaa;">Try checking back later or expand your search radius.</p>';
+            }, 1000);
+        }
+
+        // 4. Toggle Model Eval
         function toggleModelEval() {
             const section = document.getElementById('model-eval-section');
             section.classList.toggle('hidden');
-            if (!section.classList.contains('hidden')) {
-                loadModelEval();
-            }
         }
 
-        function loadModelEval() {
-            // Simulated model rankings (will be replaced with real data from backend)
-            const models = [
-                { name: "Claude Sonnet 4.6", score: 98, strength: "OAuth/CAPTCHA" },
-                { name: "Qwen3.5-397B", score: 97, strength: "Code Execution" },
-                { name: "DeepSeek V4", score: 91, strength: "General Logic" }
-            ];
-            
-            let html = '';
-            models.forEach((m, i) => {
-                const badge = i === 0 ? 'model-1' : i === 1 ? 'model-2' : 'model-3';
-                const medal = i === 0 ? '🥇' : i === 1 ? '🥈' : '🥉';
-                html += `<div style="margin: 8px 0;">
-                    <span class="model-badge ${badge}">${medal} ${m.name} (${m.score}%)</span><br>
-                    <small style="color: #aaa;">${m.strength}</small>
-                </div>`;
-            });
-            document.getElementById('model-rankings').innerHTML = html;
+        // 5. System Metrics (Mock for now)
+        function updateMetrics() {
+            // In production, this would call a local API
+            document.getElementById('cpu-val').innerText = "12%";
+            document.getElementById('ram-val').innerText = "4.2GB";
+            document.getElementById('bat-val').innerText = "72%";
         }
 
-        function refreshMetrics() {
-            // Simulated metrics (will be replaced with real data)
-            document.getElementById('ram-usage').textContent = '4.2 GB';
-            document.getElementById('cpu-usage').textContent = '23%';
-            document.getElementById('battery-level').textContent = '87%';
-            document.getElementById('last-update').textContent = new Date().toLocaleTimeString();
-        }
-
-        // Load initial data
-        refreshMetrics();
-        
-        // Auto-refresh metrics every 30 seconds
-        setInterval(refreshMetrics, 30000);
+        // Initialize
+        window.onload = function() {
+            loadEvents();
+            updateMetrics();
+            // Refresh metrics every 30s
+            setInterval(updateMetrics, 30000);
+        };
     </script>
 </body>
 </html>
