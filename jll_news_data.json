@@ -1,13 +1,11 @@
 {
   "headline": "\u2705 Dashboard Updated",
-  "summary": "Daily brief generated. Check local files for full details.",
-  "url": "https://github.com/karandps/hermes-ui",
-  "timestamp": "2026-04-28 08:02",
-  "screenshot_path": "jll_screenshot.jpg",
-  "last_updated": "2026-04-28T08:02:44.623509",
+  "summary": "Daily brief generated for May 03, 2026.",
   "brief": {
-    "sleep": "\ud83d\ude34 See local brief (Private)",
+    "sleep": "\ud83d\ude34 Data stored locally (Private)",
     "focus": "\ud83d\udca1 Check laptop for details",
-    "events": "\ud83d\udcc5 Full list on laptop"
-  }
+    "events": "\ud83d\udcc5 See full calendar on laptop",
+    "news": "\ud83e\udd16 AI news available on secure device"
+  },
+  "timestamp": "2026-05-03T22:00:24.593542"
 }
