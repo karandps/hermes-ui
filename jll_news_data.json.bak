@@ -1,0 +1,34 @@
+{
+  "headline": "Daily Brief Pro — Tuesday May 05, 2026",
+  "date": "2026-05-05",
+  "trip_countdown": {
+    "wedding": "22 days — May 27 (Kamran & Simrat, Vancouver)",
+    "roka": "26 days — May 31 (Manveen & Arjot, Surrey, 1 PM)",
+    "return_flight": "June 1 (SFO)"
+  },
+  "today_builds": [
+    "Vancouver trip fully documented (5 events, Obsidian + dashboard)",
+    "Dashboard fixed — Today tab + Life tab now match",
+    "OpenRouter failover corrected to nvidia/nemotron-3-super-120b-a12b:free",
+    "Session reset configured (30-min idle auto-reset)",
+    "Nightly heartbeat added (4 AM cron)",
+    "3 failing crons paused — clean slate tomorrow 8 AM"
+  ],
+  "rsiresponse": "2026-05-05",
+  "rsi": "Heavy typing day — evening: light movement only, no intensive work",
+  "job_search": {
+    "status": "Last active: May 4",
+    "action": "Block 1 hr this week for focused job search"
+  },
+  "microlearning": {
+    "topic": "System Memory vs Context Memory",
+    "insight": "3 layers: persistent memory (critical facts) + Obsidian (permanent knowledge) + SQLite logs (searchable archive). Use each for its strength.",
+    "action": "Don't fight memory — build the system so Hermes remembers for you"
+  },
+  "events": [
+    {"name": "Santana Row Art Walk", "time": "5:00 PM TODAY", "location": "Santana Row, San Jose", "going": 120}
+  ],
+  "life_priorities": ["Joy", "Health", "Meaning", "Investing", "Earning Respect"],
+  "timestamp": "2026-05-05T16:25:00-07:00",
+  "qa_rating": "8/10 — JLL news section needs restoration"
+}
