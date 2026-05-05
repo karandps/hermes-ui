@@ -28,7 +28,9 @@
     "action": "Block 1 hr this week for focused job search + cover letters"
   },
   "events": [
-    {"name": "Santana Row Art Walk & Wine Tasting", "time": "TODAY 5:00 PM", "location": "Santana Row, San Jose", "going": 120}
+    {"name": "Santana Row Art Walk & Wine Tasting", "time": "TODAY 5:00 PM", "location": "Santana Row, San Jose", "going": 120},
+    {"name": "THE ANATOMY OF AUTONOMY — Robotics Expo + GDG Meetup", "time": "Thu May 7 · 4–9 PM", "location": "Circuit Launch, 599 Fairchild Dr, Mountain View", "going": 138, "link": "https://www.meetup.com/gdg-sunnyvale/events/"},
+    {"name": "South Bay Singles Speed Dating (Olympus)", "time": "Wed May 13 · 6:30 PM (venue TBD)", "location": "South Bay", "going": "TBD", "link": "https://www.eventbrite.com"}
   ],
   "life_priorities": ["Joy", "Health", "Meaning", "Investing", "Earning Respect"],
   "qa_rating": "8/10",
