@@ -1,11 +1,50 @@
 {
-  "headline": "\u2705 Dashboard Updated",
-  "summary": "Daily brief generated for May 03, 2026.",
-  "brief": {
-    "sleep": "\ud83d\ude34 Data stored locally (Private)",
-    "focus": "\ud83d\udca1 Check laptop for details",
-    "events": "\ud83d\udcc5 See full calendar on laptop",
-    "news": "\ud83e\udd16 AI news available on secure device"
+  "headline": "🌟 Monday May 4, 2026",
+  "summary": "Dashboard v2.0 — Tabs, Micro-Learning & Weekend Plan",
+  "date": "Monday, May 4, 2026",
+  "updated": "11:47 PM PDT",
+
+  "priorities": {
+    "top": ["Joy", "Health", "Meaning", "Investing / Highest Return", "Earning Respect"],
+    "secondary": ["Pleasure", "Highest Values"]
   },
-  "timestamp": "2026-05-03T22:00:24.593542"
+
+  "micro_learning": {
+    "date": "May 4",
+    "insight": "Investing in yourself first compounds faster than any stock. Skills that command respect have the highest ROI.",
+    "action": "Spend 10 minutes identifying the #1 skill that generates both respect AND financial return.",
+    "why": "Expertise compounds. Money follows value. Build value, wealth follows."
+  },
+
+  "today": {
+    "status": "Evening — Rest & Reflect",
+    "completed": [
+      "Google account warm-up (YouTube, Maps, News, Flights)",
+      "Shoreline Lake walk with Giridhar",
+      "Dashboard Privacy Split deployed"
+    ],
+    "evening": "Rest, prep for the week"
+  },
+
+  "weekend_plan": {
+    "saturday_may_9": {
+      "morning": "Light movement (walk/stretch) — Health priority",
+      "midday": "Prep for Vancouver (neighborhoods, flights, budget) — Investing priority",
+      "evening": "Game Night — Killer Queen tournaments — Joy + Social"
+    },
+    "sunday_may_10": {
+      "morning": "Job search session (1 hour focused) — Earning Respect / Career",
+      "midday": "Review investment options OR Micro-learning deep dive",
+      "evening": "Rest / Golden hour walk / Prep for the week"
+    }
+  },
+
+  "learning_preference": "Explain new concepts simply first (as if to a 15-year-old with analogies), then go deeper only if I'm familiar with the topic. For expert-level topics, keep it short and direct.",
+
+  "tabs": ["Today", "Jobs", "Learn", "Life"],
+
+  "feedback": {
+    "like": " 👍 Got it — more like this",
+    "dislike": " 👎 Less like this — try different angle"
+  }
 }
