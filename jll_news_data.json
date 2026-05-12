@@ -1,38 +1,87 @@
 {
-  "date": "May 05, 2026",
-  "updated": "4:25 PM PDT",
-  "headline": "System Memory vs Context Memory — Today's Micro-Learning",
-  "summary": "3 layers of memory: persistent (auto-inject) + Obsidian (permanent) + SQLite (searchable). Use each for its strength.",
+  "date": "May 11, 2026",
+  "updated": "2026-05-11T05:00:56.184739",
+  "headline": "RSI: Light Keyboard Week \u2014 Job Search 7 Days Stale \u26a0\ufe0f",
+  "summary": "Monday = ease back gently after zero-keyboard weekend. Job search now 7 days stale \u2014 LinkedIn check-in today breaks the streak. 16 days to Vancouver wedding. Micro-learning: double-type rule = prevent RSI before the trip.",
   "micro_learning": {
-    "topic": "System Memory vs Context Memory",
-    "insight": "Three layers of memory: (1) Persistent memory — critical facts auto-injected every session. (2) Obsidian — unlimited permanent knowledge. (3) SQLite logs — searchable archive of every conversation. Use each for its strength.",
-    "action": "Don't fight memory — build the system so Hermes remembers for you.",
-    "why": "You spent 4 hours today rebuilding context from scratch. With proper memory layers, that drops to minutes. Every session you don't repeat yourself is compounding alpha."
+    "topic": "The No Double-Type Rule",
+    "insight": "Every task you type twice is a task you should have delegated or automated. The RSI risk isn't from big typing sessions \u2014 it's from micro-repetitions adding up across weeks. Track your 'double-types' for just one day and you'll find 5\u201310.",
+    "action": "Build a personal rule: If I type the same phrase or command more than twice, I set up a script/snippet or delegate it to Hermes. This week, catch your double-types \u2014 16 days to Vancouver means your wrists need headroom for wedding-week typing.",
+    "why": "16 days until Vancouver. The average wedding week involves 3\u20134x normal typing (itineraries, group chats, confirmations). Your wrists need reserve capacity."
   },
   "trip_countdown": {
-    "wedding": "22 days — May 27 (Kamran & Simrat)",
-    "roka": "26 days — May 31 (Manveen & Arjot, 1 PM, Surrey)",
-    "return": "27 days — June 1 (SFO)"
+    "wedding": "16 days \u2014 May 27 (Kamran & Simrat)",
+    "roka": "20 days \u2014 May 31 (Manveen & Arjot, 1 PM, Surrey)",
+    "return": "21 days \u2014 June 1 (SFO)"
   },
   "today_builds": [
-    "Vancouver trip fully documented (5 events, Obsidian + dashboard)",
-    "Dashboard fixed — Today + Life tabs now match",
-    "OpenRouter failover corrected to nvidia/nemotron-3-super-120b-a12b:free",
-    "Session reset: 30-min idle auto-reset",
-    "Nightly heartbeat added (4 AM cron)",
-    "3 failing crons paused — clean slate tomorrow 8 AM"
+    "Clean slate: 3 previously failing crons paused \u2014 system stability from May 7",
+    "4 AM nightly heartbeat cron active",
+    "Session auto-reset (30-min idle) enabled",
+    "Pending: Telegram session May 5 09:55 with unanswered message \u2014 needs manual review"
   ],
-  "rsi": "Heavy typing day — evening: light movement only, no intensive work",
+  "rsi": "Monday = light keyboard day after zero-keyboard weekend. Ease back gently. Rule for the week: Every email that can be sent via voice or Hermes delegation, do that instead. 16 days before Vancouver \u2014 wrists are rebuilding, don't undo 48 hours of recovery in one morning.",
   "job_search": {
     "status": "Last active: May 4",
-    "action": "Block 1 hr this week for focused job search + cover letters"
+    "days_stale": 7,
+    "action": "LinkedIn check-in TODAY or tomorrow \u2014 even 10 minutes breaks the streak. Post, react to posts, or update your headline. 7 days stale = search going cold. Also: any recruiter from past 2 weeks? Send a one-line follow-up."
   },
-  "events": [
-    {"name": "Santana Row Art Walk & Wine Tasting", "time": "TODAY 5:00 PM", "location": "Santana Row, San Jose", "going": 120},
-    {"name": "THE ANATOMY OF AUTONOMY — Robotics Expo + GDG Meetup", "time": "Thu May 7 · 4–9 PM", "location": "Circuit Launch, 599 Fairchild Dr, Mountain View", "going": 138, "link": "https://www.meetup.com/gdg-sunnyvale/events/"},
-    {"name": "South Bay Singles Speed Dating (Olympus)", "time": "Wed May 13 · 6:30 PM (venue TBD)", "location": "South Bay", "going": "TBD", "link": "https://www.eventbrite.com"}
+  "events": [],
+  "life_priorities": [
+    "Joy",
+    "Health",
+    "Meaning",
+    "Investing",
+    "Earning Respect"
   ],
-  "life_priorities": ["Joy", "Health", "Meaning", "Investing", "Earning Respect"],
-  "qa_rating": "8/10",
-  "timestamp": "2026-05-05T16:25:00-07:00"
+  "qa_rating": "pending",
+  "timestamp": "2026-05-11T08:00:00.000000",
+  "events_research": {
+    "source": "Parallel.ai Search API",
+    "researched_at": "2026-05-11T05:00:56.184761"
+  },
+  "next_event": {
+    "title": "2026 Conference",
+    "url": "https://mlsys.org/",
+    "excerpt": "# MLSys 2026\nNinth Annual Conference on Machine Learning and Systems\nBellevue, WA May 18th - 22nd, 2026\nRegistration 2026 Conference Hotel View Our Sp",
+    "category": "tech_ai"
+  },
+  "all_events": [
+    {
+      "title": "2026 Conference",
+      "url": "https://mlsys.org/",
+      "excerpt": "# MLSys 2026\nNinth Annual Conference on Machine Learning and Systems\nBellevue, WA May 18th - 22nd, 2026\nRegistration 2026 Conference Hotel View Our Sp",
+      "category": "tech_ai"
+    },
+    {
+      "title": "AI Expo & Conference | AI & Big Data Expo North America",
+      "url": "https://www.ai-expo.net/northamerica/",
+      "excerpt": "# AI & Big Data Expo North America\n## San Jose McEnery Convention Center, CA\n* [2026 Agenda](https://www.ai-expo.net/northamerica/agenda/ai-big-data-h",
+      "category": "tech_ai"
+    },
+    {
+      "title": "\n    Discover Bay Area Networking Events & Activities in San Francisco, CA | Eventbrite\n",
+      "url": "https://www.eventbrite.com/d/ca--san-francisco/bay-area-networking/",
+      "excerpt": "# Bay area networking Events and Things to do in San Francisco, CA\n[](https://www.eventbrite.com/e/bash-bay-area-sacramento-short-film-festival-2026-p",
+      "category": "social_networking"
+    },
+    {
+      "title": "Business Mixers - Mountain View Chamber of Commerce",
+      "url": "https://chambermv.org/business-mixers/",
+      "excerpt": "```\n+ [Events at a Glance](https://chambermv.org/glance-at-events/)\n+ [Morning with the Mayor](https://chambermv.org/morning-with-the-mayor/)\n+ [Celeb",
+      "category": "social_networking"
+    },
+    {
+      "title": "The Party Hotline - Bay Area Singles Calendar",
+      "url": "https://thepartyhotline.com/",
+      "excerpt": "# San Francisco Bay Area Singles Events\n## **Meet Local Singles at Fun, Friendly Events Across the Bay Area**\n### [WANTED: BACHELORS, 50+, FOR SINGLES",
+      "category": "singles_dating"
+    },
+    {
+      "title": "Dating and relationships events near Mountain View, CA",
+      "url": "https://www.meetup.com/find/us--ca--mountain-view/dating-and-relationships/",
+      "excerpt": "Find groups in Mountain View, CA to connect with people who share your interests. Join now to attend online or in person events.",
+      "category": "singles_dating"
+    }
+  ]
 }
