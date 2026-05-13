@@ -1,6 +1,6 @@
 {
-  "date": "May 11, 2026",
-  "updated": "2026-05-11T05:00:56.184739",
+  "date": "May 13, 2026",
+  "updated": "2026-05-13T05:00:31.970928",
   "headline": "RSI: Light Keyboard Week \u2014 Job Search 7 Days Stale \u26a0\ufe0f",
   "summary": "Monday = ease back gently after zero-keyboard weekend. Job search now 7 days stale \u2014 LinkedIn check-in today breaks the streak. 16 days to Vancouver wedding. Micro-learning: double-type rule = prevent RSI before the trip.",
   "micro_learning": {
@@ -38,49 +38,49 @@
   "timestamp": "2026-05-11T08:00:00.000000",
   "events_research": {
     "source": "Parallel.ai Search API",
-    "researched_at": "2026-05-11T05:00:56.184761"
+    "researched_at": "2026-05-13T05:00:31.970950"
   },
   "next_event": {
-    "title": "2026 Conference",
-    "url": "https://mlsys.org/",
-    "excerpt": "# MLSys 2026\nNinth Annual Conference on Machine Learning and Systems\nBellevue, WA May 18th - 22nd, 2026\nRegistration 2026 Conference Hotel View Our Sp",
+    "title": "Bond AI - San Francisco and Bay Area \u00b7 Events Calendar - Luma",
+    "url": "https://luma.com/genai-sf",
+    "excerpt": "# Bond AI - San Francisco and Bay Area\n## Events\n### Getting Started with OpenClaw: Workshop\n\u200b\nBy TechEquity Ai, Sheena Tu, Mahan Soltanzadeh & Dave N",
     "category": "tech_ai"
   },
   "all_events": [
     {
-      "title": "2026 Conference",
-      "url": "https://mlsys.org/",
-      "excerpt": "# MLSys 2026\nNinth Annual Conference on Machine Learning and Systems\nBellevue, WA May 18th - 22nd, 2026\nRegistration 2026 Conference Hotel View Our Sp",
+      "title": "Bond AI - San Francisco and Bay Area \u00b7 Events Calendar - Luma",
+      "url": "https://luma.com/genai-sf",
+      "excerpt": "# Bond AI - San Francisco and Bay Area\n## Events\n### Getting Started with OpenClaw: Workshop\n\u200b\nBy TechEquity Ai, Sheena Tu, Mahan Soltanzadeh & Dave N",
       "category": "tech_ai"
     },
     {
-      "title": "AI Expo & Conference | AI & Big Data Expo North America",
-      "url": "https://www.ai-expo.net/northamerica/",
-      "excerpt": "# AI & Big Data Expo North America\n## San Jose McEnery Convention Center, CA\n* [2026 Agenda](https://www.ai-expo.net/northamerica/agenda/ai-big-data-h",
+      "title": "Artificial Intelligence (AI) conferences in Mountain View 2025 / 2026",
+      "url": "https://dev.events/NA/US/CA/Mountain_View/ai",
+      "excerpt": "# Artificial Intelligence (AI) conferences in Mountain View 2026 / 2027\nLocations and topics Locations and topics\nUpcoming events Newest events\n\n## Be",
       "category": "tech_ai"
     },
     {
-      "title": "\n    Discover Bay Area Networking Events & Activities in San Francisco, CA | Eventbrite\n",
-      "url": "https://www.eventbrite.com/d/ca--san-francisco/bay-area-networking/",
-      "excerpt": "# Bay area networking Events and Things to do in San Francisco, CA\n[](https://www.eventbrite.com/e/bash-bay-area-sacramento-short-film-festival-2026-p",
+      "title": "\n    Networking Events in Mountain View - Elevate Your Career | Eventbrite\n",
+      "url": "https://www.eventbrite.com/d/ca--mountain-view/networking/",
+      "excerpt": "# Networking Events in Mountain View\n_Share this event: East Bay Nova Connect + Elevate: Owning Your Story_ _Save this event: East Bay Nova Connect + ",
       "category": "social_networking"
     },
     {
-      "title": "Business Mixers - Mountain View Chamber of Commerce",
-      "url": "https://chambermv.org/business-mixers/",
-      "excerpt": "```\n+ [Events at a Glance](https://chambermv.org/glance-at-events/)\n+ [Morning with the Mayor](https://chambermv.org/morning-with-the-mayor/)\n+ [Celeb",
+      "title": "Upcoming Events for YPE Bay Area \u2014 Young Professionals in Energy- SF Bay Area",
+      "url": "https://www.ypesfbayarea.org/events-page",
+      "excerpt": "# YPE South Bay Happy Hour\n* Friday, May 22, 2026\n* 5:00\u202fPM 7:30\u202fPM 17:00 19:30\n* Cascal [(map)](http://maps.google.com?q=400 Castro St Mountain View,",
       "category": "social_networking"
     },
     {
-      "title": "The Party Hotline - Bay Area Singles Calendar",
-      "url": "https://thepartyhotline.com/",
-      "excerpt": "# San Francisco Bay Area Singles Events\n## **Meet Local Singles at Fun, Friendly Events Across the Bay Area**\n### [WANTED: BACHELORS, 50+, FOR SINGLES",
+      "title": "Singles 20s 30s events near San Jose, CA",
+      "url": "https://www.meetup.com/find/us--ca--san-jose/singles-20s-30s/",
+      "excerpt": "[](https://www.meetup.com/)\nHomepage\nEnglish\nLog in Sign up",
       "category": "singles_dating"
     },
     {
-      "title": "Dating and relationships events near Mountain View, CA",
-      "url": "https://www.meetup.com/find/us--ca--mountain-view/dating-and-relationships/",
-      "excerpt": "Find groups in Mountain View, CA to connect with people who share your interests. Join now to attend online or in person events.",
+      "title": "Meetups Events | List Of All Upcoming Meetups Events In San Jose",
+      "url": "https://allevents.in/san-jose/meetups",
+      "excerpt": "# Meetups Events in San Jose\nThis informal meetings called meetups are organized all round the year. Meetups in San Jose are organized for distinctive",
       "category": "singles_dating"
     }
   ]

@@ -36,6 +36,32 @@ _Last updated: {news['timestamp']}_
     
     update.message.reply_text(response, parse_mode='Markdown')
 
+def handle_bio_data(update, context):
+    """
+    Handler for bio tracking data from Telegram WebApp
+    Receives: {"type":"bio","energy":3,"pain":2,"mode":"deep"}
+    Writes to bio_log.txt
+    """
+    import json
+    query = update.callback_query
+    try:
+        data = json.loads(query.data)
+        if data.get('type') != 'bio':
+            return
+        energy = data.get('energy', '?')
+        pain = data.get('pain', '?')
+        mode = data.get('mode', '?')
+        timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        log_entry = f"{timestamp} | Energy: {energy}/5 | Pain: {pain}/5 | Mode: {mode}\n"
+        with open(BIO_LOG_FILE, 'a') as f:
+            f.write(log_entry)
+        query.answer(text=f"✓ Logged: ⚡{energy} 🩹{pain} 🎯{mode}", show_alert=True)
+    except json.JSONDecodeError:
+        query.answer(text="Invalid data format", show_alert=True)
+    except Exception as e:
+        query.answer(text=f"Error: {e}", show_alert=True)
+
+
 def handle_log_energy(update, context):
     """
     Handler for /log_energy command
@@ -44,17 +70,17 @@ def handle_log_energy(update, context):
     if not context.args:
         update.message.reply_text("Usage: /log_energy <level 1-5> [note]")
         return
-    
+
     level = context.args[0]
     note = ' '.join(context.args[1:]) if len(context.args) > 1 else ""
-    
+
     # Log to file
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     log_entry = f"{timestamp} | Energy: {level}/5 | {note}\n"
-    
+
     with open(BIO_LOG_FILE, 'a') as f:
         f.write(log_entry)
-    
+
     update.message.reply_text(f"✓ Logged energy level {level}/5")
 
 def fetch_jll_news():

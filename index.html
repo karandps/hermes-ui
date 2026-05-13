@@ -332,6 +332,7 @@
         </div>
 
         <button class="tracker-log-btn" id="log-bio-btn" onclick="logBio()">✓ Log Today's Check-In</button>
+        <div id="bio-debug" style="font-size:10px;color:#555;margin-top:6px;display:none">bot: <span id="bot-unknown">checking...</span></div>
     </div>
 
     <!-- Micro-Learning Card -->
@@ -594,32 +595,48 @@
         if (!bioState.energy || !bioState.pain || !bioState.mode) return;
         const label = `${bioState.energy}/${bioState.pain}/${bioState.mode}`;
         const data = JSON.stringify({ type: 'bio', energy: bioState.energy, pain: bioState.pain, mode: bioState.mode });
-        // Visual feedback
+        const bioText = 'bio:' + data;
         const btn = document.getElementById('log-bio-btn');
+
+        // Discover bot username from initDataUnsafe if available
+        let botUsername = 'hermes_bot'; // fallback
+        try {
+            const unsafe = tg.initDataUnsafe || {};
+            // start_param often contains the bot username or start param
+            if (unsafe.start_param) botUsername = unsafe.start_param.replace(/[^a-zA-Z0-9_]/g, '') || 'hermes_bot';
+            // Try to get bot username from tg if available
+            if (tg.initDataUnsafe && tg.initDataUnsafe.bot_username) {
+                botUsername = tg.initDataUnsafe.bot_username;
+            }
+        } catch(e) {}
+
+        // Show debug info
+        const debugEl = document.getElementById('bio-debug');
+        if (debugEl) {
+            debugEl.style.display = 'block';
+            document.getElementById('bot-unknown').textContent = botUsername + ' (try: ' + tg.initDataUnsafe.start_param + ')';
+        }
+
         btn.textContent = '✓ Logging...';
         btn.disabled = true;
-        // Try Telegram sendData
-        if (tg && tg.sendData) {
-            tg.sendData("bio:" + data);
+
+        // Method: open Telegram link with pre-filled text (works for URL-opened webapps)
+        const encoded = encodeURIComponent(bioText);
+        const telegramUrl = `https://t.me/${botUsername}?text=${encoded}`;
+        tg.openTelegramLink(telegramUrl);
+
+        setTimeout(() => {
+            btn.textContent = '✓ Logged — ' + label + ' ✓';
+            btn.style.background = '#00cc66';
             setTimeout(() => {
-                btn.textContent = '✓ Logged — ' + label;
-                btn.style.background = '#00cc66';
-                // Reset after 2s
-                setTimeout(() => {
-                    btn.classList.remove('ready');
-                    btn.textContent = '✓ Log Today\'s Check-In';
-                    btn.disabled = false;
-                    btn.style.background = '';
-                    bioState = { energy: null, pain: null, mode: null };
-                    document.querySelectorAll('.tbtn').forEach(b => b.classList.remove('selected'));
-                }, 2000);
-            }, 500);
-        } else {
-            // Fallback: show in chat
-            alert('Bio logged: ' + label + '\n(Open in Telegram to send via bot)');
-            btn.classList.remove('ready');
-            btn.textContent = '✓ Log Today\'s Check-In';
-        }
+                btn.classList.remove('ready');
+                btn.textContent = '✓ Log Today\'s Check-In';
+                btn.disabled = false;
+                btn.style.background = '';
+                bioState = { energy: null, pain: null, mode: null };
+                document.querySelectorAll('.tbtn').forEach(b => b.classList.remove('selected'));
+            }, 2500);
+        }, 800);
     }
 
     // Feedback — sends to Hermes via Telegram callback
