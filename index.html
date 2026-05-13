@@ -600,7 +600,7 @@
         btn.disabled = true;
         // Try Telegram sendData
         if (tg && tg.sendData) {
-            tg.sendData(data);
+            tg.sendData("bio:" + data);
             setTimeout(() => {
                 btn.textContent = '✓ Logged — ' + label;
                 btn.style.background = '#00cc66';
