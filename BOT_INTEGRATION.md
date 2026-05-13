@@ -71,6 +71,31 @@ python3 /home/karan/hermes-ui/summarize_jll.py
 2. Dashboard sends `/log_energy <level>` to bot
 3. Bot calls `handle_log_energy()` function
 4. Function appends to `/home/karan/bio_log.txt`
+5. Bot confirms with ✓ Logged energy level X/5
+
+### Bio Tracker (Energy + Pain + Mode)
+
+**New format — as of May 13, 2026:**
+1. User taps Energy (1-5), RSI Pain (1-5), and Mode (Deep/Meetings/Social/Rest) buttons on the Today tab
+2. User taps "✓ Log Today's Check-In"
+3. `logBio()` sends JSON via `Telegram.WebApp.sendData()`: `{"type":"bio","energy":3,"pain":2,"mode":"deep"}`
+4. Bot receives via `CallbackQueryHandler(handle_bio_data)` and writes to `bio_log.txt`
+5. User sees in-line alert: "✓ Logged: ⚡3 🩹2 🎯deep"
+
+**Log format in bio_log.txt:**
+```
+2026-05-13 08:15:00 | Energy: 4/5 | Pain: 2/5 | Mode: deep
+```
+
+**Required bot setup:**
+```python
+from telegram import Update
+from telegram.ext import CallbackQueryHandler
+from bot_handlers import handle_bio_data
+
+# Register bio tracker callback
+application.add_handler(CallbackQueryHandler(handle_bio_data))
+```
 
 ## Files to Integrate
 
