@@ -351,23 +351,18 @@
     <div class="card">
         <div class="card-title">📅 Today — May 16 (Saturday)</div>
         <p><strong>Status:</strong> <span style="color:#00cc66;">Saturday = RSI Review + Delegation Audit</span></p>
-        <br>
-        <p><strong>✅ This Week:</strong></p>
+        <p style="margin-top:8px;"><strong>✅ This Week:</strong></p>
         <ul>
             <li>Session cleanup — 16 unclosed sessions resolved</li>
             <li>RSI Prevention cron set — Fridays 11 AM</li>
             <li>Dashboard formatting rules updated</li>
         </ul>
-        <br>
-        <p><strong>🎯 Today:</strong> Weekly RSI review + delegation audit + Yasmeen catch-up</p>
+        <p style="margin-top:8px;"><strong>🎯 Today:</strong> Weekly RSI review + delegation audit + Yasmeen catch-up</p>
     </div>
 
     <!-- Events This Week — Sorted by Date -->
     <div class="card">
         <div class="card-title">🎭 Events This Week (Sorted by Date)</div>
-
-        
-
         <!-- SAT MAY 16 -->
         <div style="background:#1a1a2a; border-radius:10px; padding:12px; border-left:3px solid #ec4899;">
             <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:6px;">
@@ -377,14 +372,11 @@
             <div style="font-size:12px; color:#aaa; margin-bottom:6px;">📅 Sat May 16 · 7:00–9:00 PM PDT</div>
             <div style="font-size:12px; color:#888; margin-bottom:6px;">📍 Venue TBA, San Jose</div>
             <div style="font-size:12px; color:#888; margin-bottom:8px;">💕 Low-pressure large social — meet professionals across South Bay. Relaxed, no structured format.</div>
-            <a href="https://www.eventbrite.com/e/san-jose-singles-mixer-2026-tickets-1987886758808" target="_blank" style="display:inline-block; background:#ec4899; color:#fff; padding:6px 14px; border-radius:8px; font-size:12px; font-weight:700;">RSVP on Eventbrite →</a>
+            <span style="display:inline-block; background:#555; color:#aaa; padding:6px 14px; border-radius:8px; font-size:12px; font-weight:700;">⚠️ Event may be sold out / moved — check Eventbrite</span>
         </div>
 
         <p style="font-size:11px; color:#555; margin-top:12px;">Source: Manus.im + Perplexity AI · Filtered: 15+ RSVPs · Personal notes included where available</p>
     </div>
-
-    
-</div>
 
 <!-- ============ TAB 2: JOBS ============ -->
 <div class="tab-content" id="tab-jobs">
@@ -483,8 +475,8 @@
                 <strong style="color:#00cc66;">May 27 afternoon:</strong> <a href="https://granvilleislandbc.ca" target="_blank" style="color:#60a5fa;">Granville Island</a> — Public Market, waterfront (skip Children's Festival)<br>
                 <strong style="color:#00cc66;">May 28 morning:</strong> <a href="https://granvilleislandbc.ca" target="_blank" style="color:#60a5fa;">Granville Island</a> before 12pm Maiyan<br>
                 <strong style="color:#00cc66;">May 29 late afternoon (2–6:30pm):</strong> <a href="https://vandusengarden.org" target="_blank" style="color:#60a5fa;">VanDusen Botanical Garden</a> Artisan Market & Food Festival (free, 10am–evening)<br>
-                <strong style="color:#00cc66;">May 30 afternoon (before 6pm):</strong> <a href="https://artvancouver.ca" target="_blank" style="color:#60a5fa;">Art Vancouver 2026</a> @ Vancouver Convention Centre East (Sat 12–9pm, tickets from $25)<br>
-                <strong style="color:#00cc66;">May 31 morning (before 1pm):</strong> <a href="https://kitsfarmersmarket.com" target="_blank" style="color:#60a5fa;">Kitsilano Farmers Market</a> @ 2690 Larch St (9am–2pm, free)
+                <strong style="color:#00cc66;">May 30 afternoon (before 6pm):</strong> <a href="https://www.artvancouver.net" target="_blank" style="color:#60a5fa;">Art Vancouver 2026</a> @ Vancouver Convention Centre East (Sat 12–9pm, tickets from $25)<br>
+                <strong style="color:#00cc66;">May 31 morning (before 1pm):</strong> <a href="https://eatlocal.org/markets/kitsilano/" target="_blank" style="color:#60a5fa;">Kitsilano Farmers Market</a> @ 2690 Larch St (Sun May 31, 9am–2pm, free)
             </span>
         </div>
 
@@ -575,48 +567,43 @@
         if (!bioState.energy || !bioState.pain || !bioState.mode) return;
         const label = `${bioState.energy}/${bioState.pain}/${bioState.mode}`;
         const data = JSON.stringify({ type: 'bio', energy: bioState.energy, pain: bioState.pain, mode: bioState.mode });
-        const bioText = 'bio:' + data;
         const btn = document.getElementById('log-bio-btn');
-
-        // Discover bot username from initDataUnsafe if available
-        let botUsername = 'Karan_Hermes_bot'; // default — correct bot for this webapp
-        try {
-            const unsafe = tg.initDataUnsafe || {};
-            // start_param often contains the bot username or start param
-            if (unsafe.start_param) botUsername = unsafe.start_param.replace(/[^a-zA-Z0-9_]/g, '') || 'hermes_bot';
-            // Try to get bot username from tg if available
-            if (tg.initDataUnsafe && tg.initDataUnsafe.bot_username) {
-                botUsername = tg.initDataUnsafe.bot_username;
-            }
-        } catch(e) {}
-
-        // Show debug info
-        const debugEl = document.getElementById('bio-debug');
-        if (debugEl) {
-            debugEl.style.display = 'block';
-            document.getElementById('bot-unknown').textContent = botUsername + ' (try: ' + tg.initDataUnsafe.start_param + ')';
-        }
 
         btn.textContent = '✓ Logging...';
         btn.disabled = true;
 
-        // Method: open Telegram link with pre-filled text (works for URL-opened webapps)
-        const encoded = encodeURIComponent(bioText);
-        const telegramUrl = `https://t.me/${botUsername}?text=${encoded}`;
-        tg.openTelegramLink(telegramUrl);
-
-        setTimeout(() => {
-            btn.textContent = '✓ Logged — ' + label + ' ✓';
-            btn.style.background = '#00cc66';
+        // PRIMARY: tg.sendData() sends directly to bot via callback_query — no new window, one tap
+        if (typeof tg !== 'undefined' && tg.sendData) {
+            // sendData delivers to the bot's web_app_data handler (gateway line 3788)
+            // Bot will reply in Telegram with ✓ confirmation
+            tg.sendData(data);
+            // Mini App closes automatically after sendData — user sees bot reply in Telegram
+        } else {
+            // FALLBACK: Not in Telegram context (plain browser) — use openTelegramLink
+            const bioText = 'bio:' + data;
+            const encoded = encodeURIComponent(bioText);
+            tg.openTelegramLink(`https://t.me/Karan_Hermes_bot?text=${encoded}`);
+            // Show confirmation (fake it for UX since we can't get bot reply in web mode)
             setTimeout(() => {
-                btn.classList.remove('ready');
-                btn.textContent = '✓ Log Today\'s Check-In';
-                btn.disabled = false;
-                btn.style.background = '';
-                bioState = { energy: null, pain: null, mode: null };
-                document.querySelectorAll('.tbtn').forEach(b => b.classList.remove('selected'));
-            }, 2500);
-        }, 800);
+                btn.textContent = '✓ Logged — ' + label + ' ✓';
+                btn.style.background = '#00cc66';
+                setTimeout(resetBioUI, 2500);
+            }, 500);
+        }
+
+        // Reset UI after a delay (actual confirmation comes from bot reply in Telegram)
+        setTimeout(resetBioUI, 800);
+    }
+
+    function resetBioUI() {
+        const btn = document.getElementById('log-bio-btn');
+        if (!btn) return;
+        btn.classList.remove('ready');
+        btn.textContent = "✓ Log Today's Check-In";
+        btn.disabled = false;
+        btn.style.background = '';
+        bioState = { energy: null, pain: null, mode: null };
+        document.querySelectorAll('.tbtn').forEach(b => b.classList.remove('selected'));
     }
 
     // Feedback — sends to Hermes via Telegram callback
