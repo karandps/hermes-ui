@@ -566,7 +566,6 @@
     function logBio() {
         if (!bioState.energy || !bioState.pain || !bioState.mode) return;
         const label = `${bioState.energy}/${bioState.pain}/${bioState.mode}`;
-        const data = JSON.stringify({ type: 'bio', energy: bioState.energy, pain: bioState.pain, mode: bioState.mode });
         const btn = document.getElementById('log-bio-btn');
 
         btn.textContent = '✓ Logging...';
@@ -574,9 +573,10 @@
 
         // PRIMARY: tg.sendData() sends directly to bot via callback_query — no new window, one tap
         if (typeof tg !== 'undefined' && tg.sendData) {
-            // sendData delivers to the bot's web_app_data handler (gateway line 3788)
-            // Bot will reply in Telegram with ✓ confirmation
-            tg.sendData(data);
+            // sendData delivers to the bot's callback_query handler (gateway line 2657)
+            // Gateway expects "bio:{json}" format — add the prefix
+            const payload = JSON.stringify({ type: 'bio', energy: bioState.energy, pain: bioState.pain, mode: bioState.mode });
+            tg.sendData('bio:' + payload);
             // Mini App closes automatically after sendData — user sees bot reply in Telegram
         } else {
             // FALLBACK: Not in Telegram context (plain browser) — use openTelegramLink
