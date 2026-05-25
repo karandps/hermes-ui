@@ -275,16 +275,16 @@
 
 <!-- Tab Navigation -->
 <div class="tabs">
-    <div class="tab active" onclick="switchTab('today')">
+    <div class="tab active" onclick="switchTab('today', this)">
         <span class="tab-icon">📋</span>Today
     </div>
-    <div class="tab" onclick="switchTab('jobs')">
+    <div class="tab" onclick="switchTab('jobs', this)">
         <span class="tab-icon">💼</span>Jobs
     </div>
-    <div class="tab" onclick="switchTab('learn')">
+    <div class="tab" onclick="switchTab('learn', this)">
         <span class="tab-icon">🧠</span>Learn
     </div>
-    <div class="tab" onclick="switchTab('life')">
+    <div class="tab" onclick="switchTab('life', this)">
         <span class="tab-icon">🌱</span>Life
     </div>
 </div>
@@ -536,14 +536,14 @@
         }
     }
 
-    // Tab switching - simple and robust
-    function switchTab(name) {
+    // Tab switching - robust event delegation
+    function switchTab(name, btn) {
         // Hide all tab content
         document.querySelectorAll('.tab-content').forEach(c => {
             c.style.display = 'none';
             c.classList.remove('active');
         });
-        // Remove active from all tabs
+        // Remove active from all tab buttons
         document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
         // Show target tab content
         const target = document.getElementById('tab-' + name);
@@ -551,8 +551,12 @@
             target.style.display = 'block';
             target.classList.add('active');
         }
-        // Highlight clicked tab
-        event.target.closest('.tab').classList.add('active');
+        // Highlight clicked tab button (use passed element, fallback to querySelector)
+        if (btn) {
+            btn.classList.add('active');
+        } else {
+            document.querySelector('.tabs > .tab[onclick*="switchTab(\'' + name + '\')"]').classList.add('active');
+        }
     }
 
     // Bio tracker state
