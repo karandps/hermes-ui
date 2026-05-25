@@ -536,24 +536,23 @@
         }
     }
 
-    // Tab switching - fixed selector
+    // Tab switching - simple and robust
     function switchTab(name) {
-        // Remove active from all tabs and content
-        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-        document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-        // Add active to clicked tab
-        document.querySelectorAll('.tab').forEach(t => {
-            if (t.getAttribute('onclick') && t.getAttribute('onclick').includes("switchTab('" + name + "')")) {
-                t.classList.add('active');
-            }
+        // Hide all tab content
+        document.querySelectorAll('.tab-content').forEach(c => {
+            c.style.display = 'none';
+            c.classList.remove('active');
         });
-        // Show target content
+        // Remove active from all tabs
+        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+        // Show target tab content
         const target = document.getElementById('tab-' + name);
         if (target) {
             target.style.display = 'block';
             target.classList.add('active');
         }
-        console.log('Switched to:', name);
+        // Highlight clicked tab
+        event.target.closest('.tab').classList.add('active');
     }
 
     // Bio tracker state
