@@ -1,87 +1,54 @@
 {
-  "date": "May 13, 2026",
-  "updated": "2026-05-13T05:00:31.970928",
-  "headline": "RSI: Light Keyboard Week \u2014 Job Search 7 Days Stale \u26a0\ufe0f",
-  "summary": "Monday = ease back gently after zero-keyboard weekend. Job search now 7 days stale \u2014 LinkedIn check-in today breaks the streak. 16 days to Vancouver wedding. Micro-learning: double-type rule = prevent RSI before the trip.",
+  "date": "May 25, 2026",
+  "updated": "2026-05-25T04:15:00.000000",
+  "headline": "2 days to Vancouver wedding — finalize packing today",
+  "summary": "Trip countdown active (2 days), RSI low strain, job search 20 days stale. Micro-learning on delegation. Start of week life priorities check.",
   "micro_learning": {
-    "topic": "The No Double-Type Rule",
-    "insight": "Every task you type twice is a task you should have delegated or automated. The RSI risk isn't from big typing sessions \u2014 it's from micro-repetitions adding up across weeks. Track your 'double-types' for just one day and you'll find 5\u201310.",
-    "action": "Build a personal rule: If I type the same phrase or command more than twice, I set up a script/snippet or delegate it to Hermes. This week, catch your double-types \u2014 16 days to Vancouver means your wrists need headroom for wedding-week typing.",
-    "why": "16 days until Vancouver. The average wedding week involves 3\u20134x normal typing (itineraries, group chats, confirmations). Your wrists need reserve capacity."
+    "topic": "Delegation Before Travel",
+    "insight": "Automations can run unattended for 6+ days while you're in Vancouver — Daily Brief, Opportunity Scanner, Parallel Search all continue without intervention",
+    "action": "Before leaving: confirm cron jobs are active, scripts have needed cookies (Luma), and any pending follow-ups are queued",
+    "why": "Supports Health (zero RSI) and Earning Respect (stay on top of opportunities while traveling)"
   },
   "trip_countdown": {
-    "wedding": "16 days \u2014 May 27 (Kamran & Simrat)",
-    "roka": "20 days \u2014 May 31 (Manveen & Arjot, 1 PM, Surrey)",
-    "return": "21 days \u2014 June 1 (SFO)"
+    "wedding": 2,
+    "roka": 6,
+    "return": 7
   },
-  "today_builds": [
-    "Clean slate: 3 previously failing crons paused \u2014 system stability from May 7",
-    "4 AM nightly heartbeat cron active",
-    "Session auto-reset (30-min idle) enabled",
-    "Pending: Telegram session May 5 09:55 with unanswered message \u2014 needs manual review"
-  ],
-  "rsi": "Monday = light keyboard day after zero-keyboard weekend. Ease back gently. Rule for the week: Every email that can be sent via voice or Hermes delegation, do that instead. 16 days before Vancouver \u2014 wrists are rebuilding, don't undo 48 hours of recovery in one morning.",
+  "today_builds": ["Parallel Search ran at 02:37 AM — data collected"],
+  "rsi": "Low strain today (cron job, silent). Use voice-to-text for any JLL updates.",
   "job_search": {
-    "status": "Last active: May 4",
-    "days_stale": 7,
-    "action": "LinkedIn check-in TODAY or tomorrow \u2014 even 10 minutes breaks the streak. Post, react to posts, or update your headline. 7 days stale = search going cold. Also: any recruiter from past 2 weeks? Send a one-line follow-up."
+    "status": "Inactive",
+    "days_stale": 20,
+    "action": "Resume LinkedIn outreach after Vancouver trip — update profile with JLL AI work when back"
   },
   "events": [],
   "life_priorities": [
-    "Joy",
-    "Health",
-    "Meaning",
-    "Investing",
-    "Earning Respect"
+    "Joy: Finalize Vancouver packing list today",
+    "Health: RSI voice-first all day",
+    "Meaning: Family wedding events starting May 27",
+    "Investing: Review Q2 portfolio after trip",
+    "Earning Respect: Draft JLL AI agent case study post-trip"
   ],
   "qa_rating": "pending",
-  "timestamp": "2026-05-11T08:00:00.000000",
+  "timestamp": "2026-05-25T04:15:00.000000",
   "events_research": {
-    "source": "Parallel.ai Search API",
-    "researched_at": "2026-05-13T05:00:31.970950"
+    "source": "none (no events within 2hr window)",
+    "researched_at": "2026-05-25T04:15:00.000000"
   },
   "next_event": {
-    "title": "Bond AI - San Francisco and Bay Area \u00b7 Events Calendar - Luma",
-    "url": "https://luma.com/genai-sf",
-    "excerpt": "# Bond AI - San Francisco and Bay Area\n## Events\n### Getting Started with OpenClaw: Workshop\n\u200b\nBy TechEquity Ai, Sheena Tu, Mahan Soltanzadeh & Dave N",
-    "category": "tech_ai"
+    "title": "Kamran & Simrat's Wedding Celebration",
+    "url": "https://kamranandsnow.com",
+    "excerpt": "Wedding celebration starts May 27, Maiyan/Sangeet May 28, Anand Karaj May 29, Reception May 30 at Pan Pacific Vancouver",
+    "category": "Family"
   },
   "all_events": [
-    {
-      "title": "Bond AI - San Francisco and Bay Area \u00b7 Events Calendar - Luma",
-      "url": "https://luma.com/genai-sf",
-      "excerpt": "# Bond AI - San Francisco and Bay Area\n## Events\n### Getting Started with OpenClaw: Workshop\n\u200b\nBy TechEquity Ai, Sheena Tu, Mahan Soltanzadeh & Dave N",
-      "category": "tech_ai"
-    },
-    {
-      "title": "Artificial Intelligence (AI) conferences in Mountain View 2025 / 2026",
-      "url": "https://dev.events/NA/US/CA/Mountain_View/ai",
-      "excerpt": "# Artificial Intelligence (AI) conferences in Mountain View 2026 / 2027\nLocations and topics Locations and topics\nUpcoming events Newest events\n\n## Be",
-      "category": "tech_ai"
-    },
-    {
-      "title": "\n    Networking Events in Mountain View - Elevate Your Career | Eventbrite\n",
-      "url": "https://www.eventbrite.com/d/ca--mountain-view/networking/",
-      "excerpt": "# Networking Events in Mountain View\n_Share this event: East Bay Nova Connect + Elevate: Owning Your Story_ _Save this event: East Bay Nova Connect + ",
-      "category": "social_networking"
-    },
-    {
-      "title": "Upcoming Events for YPE Bay Area \u2014 Young Professionals in Energy- SF Bay Area",
-      "url": "https://www.ypesfbayarea.org/events-page",
-      "excerpt": "# YPE South Bay Happy Hour\n* Friday, May 22, 2026\n* 5:00\u202fPM 7:30\u202fPM 17:00 19:30\n* Cascal [(map)](http://maps.google.com?q=400 Castro St Mountain View,",
-      "category": "social_networking"
-    },
-    {
-      "title": "Singles 20s 30s events near San Jose, CA",
-      "url": "https://www.meetup.com/find/us--ca--san-jose/singles-20s-30s/",
-      "excerpt": "[](https://www.meetup.com/)\nHomepage\nEnglish\nLog in Sign up",
-      "category": "singles_dating"
-    },
-    {
-      "title": "Meetups Events | List Of All Upcoming Meetups Events In San Jose",
-      "url": "https://allevents.in/san-jose/meetups",
-      "excerpt": "# Meetups Events in San Jose\nThis informal meetings called meetups are organized all round the year. Meetups in San Jose are organized for distinctive",
-      "category": "singles_dating"
-    }
+    {"title": "Wedding Celebration Starts", "date": "2026-05-27", "days_away": 2},
+    {"title": "Maiyan", "date": "2026-05-28", "days_away": 3},
+    {"title": "Sangeet", "date": "2026-05-28", "days_away": 3},
+    {"title": "Anand Karaj", "date": "2026-05-29", "days_away": 4},
+    {"title": "Dinner Cruise", "date": "2026-05-29", "days_away": 4},
+    {"title": "Wedding Reception", "date": "2026-05-30", "days_away": 5},
+    {"title": "Manveen & Arjot Roka", "date": "2026-05-31", "days_away": 6},
+    {"title": "Return Flight YVR→SFO", "date": "2026-06-01", "days_away": 7}
   ]
 }
