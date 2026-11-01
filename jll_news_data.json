@@ -1,54 +1,57 @@
 {
-  "date": "May 25, 2026",
-  "updated": "2026-05-25T04:15:00.000000",
-  "headline": "2 days to Vancouver wedding — finalize packing today",
-  "summary": "Trip countdown active (2 days), RSI low strain, job search 20 days stale. Micro-learning on delegation. Start of week life priorities check.",
+  "date": "November 01, 2026",
+  "updated": "2026-11-01T07:31:48.012327",
+  "headline": "\u2600\ufe0f Sunday \u2014 Job Search 168 Days Stale.",
+  "summary": "Job search 168 days stale \u2014 CBRE silent since May. Open Secure AI Alliance launched by NVIDIA/Microsoft/CrowdStrike/Nous \u2014 Karan builds on Hermes (Nous project) daily.",
   "micro_learning": {
-    "topic": "Delegation Before Travel",
-    "insight": "Automations can run unattended for 6+ days while you're in Vancouver — Daily Brief, Opportunity Scanner, Parallel Search all continue without intervention",
-    "action": "Before leaving: confirm cron jobs are active, scripts have needed cookies (Luma), and any pending follow-ups are queued",
-    "why": "Supports Health (zero RSI) and Earning Respect (stay on top of opportunities while traveling)"
+    "topic": "Job Search: Warm Outreach Over Cold Applications",
+    "insight": "Cold applications convert poorly; routed referrals convert 3-5x better. The Open Secure AI Alliance launch gives a natural reason to re-open the CBRE thread.",
+    "action": "Send one warm note to CBRE (James Hill or Gareth Seal): 'Saw the Alliance launch \u2014 I've been operating exactly this stack on Hermes daily. Open to connecting on how it could apply to CRE.'",
+    "why": "Re-opens a 5-month-old thread with a concrete, timely hook rather than a generic follow-up."
   },
-  "trip_countdown": {
-    "wedding": 2,
-    "roka": 6,
-    "return": 7
-  },
-  "today_builds": ["Parallel Search ran at 02:37 AM — data collected"],
-  "rsi": "Low strain today (cron job, silent). Use voice-to-text for any JLL updates.",
+  "trip_countdown": {},
+  "today_builds": [],
+  "rsi": null,
   "job_search": {
-    "status": "Inactive",
-    "days_stale": 20,
-    "action": "Resume LinkedIn outreach after Vancouver trip — update profile with JLL AI work when back"
+    "status": "168 days stale \u2014 CBRE: James Hill (May 13), Gareth Seal (May 17). No contact in 164 days from last CBRE reach-out.",
+    "days_stale": 168,
+    "action": "Re-establish contact: LinkedIn post + direct note to CBRE (James Hill, Gareth Seal)."
   },
   "events": [],
   "life_priorities": [
-    "Joy: Finalize Vancouver packing list today",
-    "Health: RSI voice-first all day",
-    "Meaning: Family wedding events starting May 27",
-    "Investing: Review Q2 portfolio after trip",
-    "Earning Respect: Draft JLL AI agent case study post-trip"
+    "Joy \u2014 Beautiful Sunday, system running clean",
+    "Meaning \u2014 Job search 168 days stale",
+    "Earning Respect \u2014 Q4 hiring window open; LinkedIn presence is the lever"
   ],
+  "jll_news": [
+    {
+      "source": "Commercial Observer",
+      "title": "Sunday Summary: Sweet and Loudoun",
+      "url": "https://commercialobserver.com/2026/11/sunday-summary-sweet-and-loudoun/"
+    },
+    {
+      "source": "Commercial Observer",
+      "title": "Gencom-Led JV Buys InterContinental in Downtown Miami for $300M",
+      "url": "https://commercialobserver.com/2026/10/gencom-intercontinental-downtown-miami-white-bridge-capital-dajia/"
+    },
+    {
+      "source": "Commercial Observer",
+      "title": "Weil, Gotshal\u2019s Collapse Is Perfectly Timed for Manhattan\u2019s Office Market",
+      "url": "https://commercialobserver.com/2026/10/weil-gotshal-gm-building-bxp-office/"
+    }
+  ],
+  "alpha_scan": "- **Source:** r/AI_Agents\n  - **Finding:** Stealth plugins boost scraping success by 40%.\n  - **Action:** Upgrade local agent.",
   "qa_rating": "pending",
-  "timestamp": "2026-05-25T04:15:00.000000",
+  "timestamp": "2026-11-01T07:31:48.012327",
   "events_research": {
-    "source": "none (no events within 2hr window)",
-    "researched_at": "2026-05-25T04:15:00.000000"
+    "source": "Manual",
+    "researched_at": "2026-11-01T07:31:48.012327"
   },
   "next_event": {
-    "title": "Kamran & Simrat's Wedding Celebration",
-    "url": "https://kamranandsnow.com",
-    "excerpt": "Wedding celebration starts May 27, Maiyan/Sangeet May 28, Anand Karaj May 29, Reception May 30 at Pan Pacific Vancouver",
-    "category": "Family"
+    "title": "None within 2hr window",
+    "url": "",
+    "excerpt": "",
+    "category": "none"
   },
-  "all_events": [
-    {"title": "Wedding Celebration Starts", "date": "2026-05-27", "days_away": 2},
-    {"title": "Maiyan", "date": "2026-05-28", "days_away": 3},
-    {"title": "Sangeet", "date": "2026-05-28", "days_away": 3},
-    {"title": "Anand Karaj", "date": "2026-05-29", "days_away": 4},
-    {"title": "Dinner Cruise", "date": "2026-05-29", "days_away": 4},
-    {"title": "Wedding Reception", "date": "2026-05-30", "days_away": 5},
-    {"title": "Manveen & Arjot Roka", "date": "2026-05-31", "days_away": 6},
-    {"title": "Return Flight YVR→SFO", "date": "2026-06-01", "days_away": 7}
-  ]
+  "all_events": []
 }

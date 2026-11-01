@@ -335,63 +335,61 @@
         <div id="bio-debug" style="font-size:10px;color:#555;margin-top:6px;display:none">bot: <span id="bot-unknown">checking...</span></div>
     </div>
 
+    <!-- Headline -->
+    <div class="card" id="today-headline" style="font-size:14px;font-weight:600;color:#00cc66;margin-bottom:12px;"></div>
+
+    <!-- Trip Countdown -->
+    <div class="card" id="today-trip" style="display:none;"></div>
+
+    <!-- Today's System Work -->
+    <div class="card" id="today-builds" style="display:none;">
+        <div class="card-title">🏗️ Today's System Work</div>
+        <ul id="today-builds-list"></ul>
+    </div>
+
+    <!-- RSI -->
+    <div class="card" id="today-rsi" style="display:none;">
+        <div class="card-title">🤲 RSI / Health</div>
+    </div>
+
+    <!-- Job Search -->
+    <div class="card" id="today-job" style="display:none;">
+        <div class="card-title">💼 Job Search</div>
+    </div>
+
+    <!-- JLL News -->
+    <div class="card" id="today-jll" style="display:none;">
+        <div class="card-title">🏢 JLL & CRE Intelligence</div>
+        <ul id="today-jll-list"></ul>
+    </div>
+
+    <!-- Alpha Scan -->
+    <div class="card" id="today-alpha" style="display:none;">
+        <div class="card-title">🧠 Agent Alpha Scan</div>
+    </div>
+
     <!-- Micro-Learning Card -->
     <div class="card micro-card">
         <div class="micro-label">🎯 Micro-Learning — 30 Seconds</div>
-        <div class="micro-insight" id="ml-insight">RSI compounds over days, not sessions. The fix isn't keyboard shortcuts — it's identifying which 20% of repeated tasks eat 80% of your typing time, then automating those first.</div>
-        <div class="micro-action" id="ml-action">📌 <strong>Action:</strong> This Friday: do a 15-min delegation audit. Top 5 typed tasks this week — for each, is there a script or cron for it?</div>
-        <div class="micro-why" id="ml-why">💡 One automated task = 20+ keystrokes saved every occurrence. That's compounding relief for your wrists. 11 days to Vancouver — hands need to be ready.</div>
+        <div class="micro-insight" id="ml-insight">Loading...</div>
+        <div class="micro-action" id="ml-action"></div>
+        <div class="micro-why" id="ml-why"></div>
         <div class="feedback-row">
             <button class="fb-btn fb-like" onclick="sendFeedback('like', 'micro')">👍 Like it</button>
             <button class="fb-btn fb-dislike" onclick="sendFeedback('dislike', 'micro')">👎 Different angle</button>
         </div>
     </div>
 
-    <!-- Today's Status -->
-    <div class="card">
-        <div class="card-title">📅 Today — May 16 (Saturday)</div>
-        <p><strong>Status:</strong> <span style="color:#00cc66;">Saturday = RSI Review + Delegation Audit</span></p>
-        <p style="margin-top:8px;"><strong>✅ This Week:</strong></p>
-        <ul>
-            <li>Session cleanup — 16 unclosed sessions resolved</li>
-            <li>RSI Prevention cron set — Fridays 11 AM</li>
-            <li>Dashboard formatting rules updated</li>
-        </ul>
-        <p style="margin-top:8px;"><strong>🎯 Today:</strong> Weekly RSI review + delegation audit + Yasmeen catch-up</p>
-    </div>
-
-    <!-- Events This Week — Sorted by Date -->
-    <div class="card">
-        <div class="card-title">🎭 Events This Week (Sorted by Date)</div>
-        <!-- SAT MAY 16 -->
-        <div style="background:#1a1a2a; border-radius:10px; padding:12px; border-left:3px solid #ec4899;">
-            <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:6px;">
-                <strong style="color:#f472b6; font-size:14px;">💕 San Jose Singles Mixer 2026</strong>
-                <span style="background:#ec4899; color:#fff; font-size:11px; padding:2px 8px; border-radius:10px; font-weight:700;">25+ RSVPs · Social</span>
-            </div>
-            <div style="font-size:12px; color:#aaa; margin-bottom:6px;">📅 Sat May 16 · 7:00–9:00 PM PDT</div>
-            <div style="font-size:12px; color:#888; margin-bottom:6px;">📍 Venue TBA, San Jose</div>
-            <div style="font-size:12px; color:#888; margin-bottom:8px;">💕 Low-pressure large social — meet professionals across South Bay. Relaxed, no structured format.</div>
-            <span style="display:inline-block; background:#555; color:#aaa; padding:6px 14px; border-radius:8px; font-size:12px; font-weight:700;">⚠️ Event may be sold out / moved — check Eventbrite</span>
-        </div>
-
-        <p style="font-size:11px; color:#555; margin-top:12px;">Source: Manus.im + Perplexity AI · Filtered: 15+ RSVPs · Personal notes included where available</p>
-    </div>
-</div>
-
 <!-- ============ TAB 2: JOBS ============ -->
 <div class="tab-content" id="tab-jobs">
     <div class="card">
         <div class="card-title">💼 Job Search Status</div>
-        <p><strong>Account:</strong> kdsingh4051@gmail.com — Warming up</p>
-        <p style="margin-top:8px;"><strong>Target Roles:</strong> Head of AI, Director of AI, VP of AI</p>
-        <p><strong>Target Locations:</strong> Vancouver, Mountain View, San Francisco</p>
-        <p style="margin-top:8px; color:#00cc66; font-size:12px;">✅ Manual warm-up completed May 4, 2026 — automation still paused per your request</p>
+        <div id="jobs-status">Loading...</div>
     </div>
 
     <div class="card">
         <div class="card-title">📊 Recent Activity</div>
-        <p>No job applications logged yet.</p>
+        <p id="jobs-activity">No job applications logged yet.</p>
         <p style="color:#888; font-size:12px; margin-top:8px;">Run /jobs in the chat to scan for new opportunities.</p>
     </div>
 
@@ -415,11 +413,20 @@
         <p style="margin-top:8px;"><strong>Expert topics:</strong> Short, direct, no fluff. Skip the basics.</p>
     </div>
 
+    <div class="card micro-card" id="learn-current">
+        <div class="micro-label">🎯 Today's Micro-Learning</div>
+        <div class="micro-insight">Loading...</div>
+        <div class="micro-action" id="learn-action"></div>
+        <div class="micro-why" id="learn-why"></div>
+    </div>
+
     <div class="card">
         <div class="card-title">📚 Micro-Learning History</div>
-        <div class="learn-item" style="border-left-color:#555; opacity:0.6;">
-            <div class="learn-item-date">May 16, 2026</div>
-            <div class="learn-item-text">Check tomorrow's brief for today's insight.</div>
+        <div id="learn-history">
+            <div class="learn-item" style="border-left-color:#555; opacity:0.6;">
+                <div class="learn-item-date">Today</div>
+                <div class="learn-item-text">Check today's brief for latest insight.</div>
+            </div>
         </div>
     </div>
 
@@ -434,62 +441,13 @@
 <div class="tab-content" id="tab-life">
     <div class="card">
         <div class="card-title">🌱 Your Life Priorities</div>
-        <div style="margin-bottom:8px;">
-            <span class="priority-tag tag-high">💰 Investing / Highest Return</span>
-            <span class="priority-tag tag-high">🏆 Earning Respect</span>
-            <span class="priority-tag tag-high">❤️ Joy</span>
-            <span class="priority-tag tag-high">💪 Health</span>
-            <span class="priority-tag tag-high">🎯 Meaning</span>
-            <span class="priority-tag tag-med">🌟 Highest Values</span>
-            <span class="priority-tag tag-med">😌 Pleasure</span>
-        </div>
+        <div id="life-priorities">Loading...</div>
         <p style="font-size:12px; color:#888; margin-top:8px;">These are checked daily. Stay on track.</p>
     </div>
 
-<div class="card" style="border:1px solid #00cc66;">
-        <div class="card-title">✈️ Vancouver Trip — May 27–Jun 1, 2026</div>
-
-        <!-- Flights -->
-        <div style="background:#252525;border-radius:8px;padding:10px;margin-bottom:10px;border-left:3px solid #0088cc;">
-            <strong style="color:#60a5fa;font-size:12px;">✈️ Flights</strong><br>
-            <span style="font-size:11px;color:#aaa;">UA8504 · SFO→YVR · May 27 · 12:15pm→2:46pm</span><br>
-            <span style="font-size:11px;color:#aaa;">F81848 · YVR→SFO · Jun 1 · 3:30pm→6pm</span>
-        </div>
-
-        <!-- Wedding Events -->
-        <div style="background:#252525;border-radius:8px;padding:10px;margin-bottom:10px;border-left:3px solid #f97316;">
-            <strong style="color:#fb923c;font-size:12px;">💒 Wedding Events</strong><br>
-            <span style="font-size:11px;color:#ccc;line-height:1.7;">
-                <strong style="color:#fb923c;">Thu May 28 — Maiyan:</strong> 12–2 PM · Pan Pacific (Festive Traditional)<br>
-                <strong style="color:#fb923c;">Thu May 28 — Sangeet:</strong> 6 PM · Vancouver Convention Centre (Glamorous & Festive)<br>
-                <strong style="color:#fb923c;">Fri May 29 — Anand Karaj:</strong> 10 AM · Pan Pacific (Traditional & Elegant)<br>
-                <strong style="color:#fb923c;">Fri May 29 — Dinner Cruise:</strong> 6:30 PM (Fun & Comfortable)<br>
-                <strong style="color:#fb923c;">Sat May 30 — Reception:</strong> 6 PM · Pan Pacific, Crystal Pavilion (Black Tie)<br>
-                <strong style="color:#fb923c;">Sun May 31 — Roka:</strong> 1 PM · 12265 67A Ave, Surrey BC
-            </span>
-        </div>
-
-        <!-- Sightseeing Recommendations -->
-        <div style="background:#252525;border-radius:8px;padding:10px;margin-bottom:10px;border-left:3px solid #00cc66;">
-            <strong style="color:#00cc66;font-size:12px;">🗺️ Sightseeing Recommendations</strong><br>
-            <span style="font-size:11px;color:#ccc;line-height:1.8;">
-                <strong style="color:#00cc66;">May 27 afternoon:</strong> <a href="https://granvilleislandbc.ca" target="_blank" style="color:#60a5fa;">Granville Island</a> — Public Market, waterfront (skip Children's Festival)<br>
-                <strong style="color:#00cc66;">May 28 morning:</strong> <a href="https://granvilleislandbc.ca" target="_blank" style="color:#60a5fa;">Granville Island</a> before 12pm Maiyan<br>
-                <strong style="color:#00cc66;">May 29 late afternoon (2–6:30pm):</strong> <a href="https://vandusengarden.org" target="_blank" style="color:#60a5fa;">VanDusen Botanical Garden</a> Artisan Market & Food Festival (free, 10am–evening)<br>
-                <strong style="color:#00cc66;">May 30 afternoon (before 6pm):</strong> <a href="https://www.artvancouver.net" target="_blank" style="color:#60a5fa;">Art Vancouver 2026</a> @ Vancouver Convention Centre East (Sat 12–9pm, tickets from $25)<br>
-                <strong style="color:#00cc66;">May 31 morning (before 1pm):</strong> <a href="https://eatlocal.org/markets/kitsilano/" target="_blank" style="color:#60a5fa;">Kitsilano Farmers Market</a> @ 2690 Larch St (Sun May 31, 9am–2pm, free)
-            </span>
-        </div>
-
-        <!-- Accommodation & Contacts -->
-        <div style="background:#252525;border-radius:8px;padding:10px;border-left:3px solid #a78bfa;">
-            <strong style="color:#a78bfa;font-size:12px;">🏠 Accommodation & Contacts</strong><br>
-            <span style="font-size:11px;color:#ccc;line-height:1.7;">
-                <strong style="color:#a78bfa;">Staying at:</strong> 10671 Seaham Crescent, Richmond BC — niece's parents (27th night + Sunday night)<br>
-                <strong style="color:#a78bfa;">Contact — Guri:</strong> nephew in Vancouver/Surrey<br>
-                <strong style="color:#a78bfa;">Contact — Niece's parents:</strong> Richmond
-            </span>
-        </div>
+    <div class="card" style="border:1px solid #00cc66;">
+        <div class="card-title">✈️ Trip Countdown</div>
+        <div id="life-trip">Loading...</div>
     </div>
 
     <div class="card">
