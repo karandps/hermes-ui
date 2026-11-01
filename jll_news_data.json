@@ -1,6 +1,6 @@
 {
   "date": "November 01, 2026",
-  "updated": "2026-11-01T07:31:48.012327",
+  "updated": "2026-11-01T08:11:24.931251",
   "headline": "\u2600\ufe0f Sunday \u2014 Job Search 168 Days Stale.",
   "summary": "Job search 168 days stale \u2014 CBRE silent since May. Open Secure AI Alliance launched by NVIDIA/Microsoft/CrowdStrike/Nous \u2014 Karan builds on Hermes (Nous project) daily.",
   "micro_learning": {
@@ -41,11 +41,36 @@
     }
   ],
   "alpha_scan": "- **Source:** r/AI_Agents\n  - **Finding:** Stealth plugins boost scraping success by 40%.\n  - **Action:** Upgrade local agent.",
+  "bio_history": [
+    {
+      "timestamp": "2026-04-27 12:39:30",
+      "energy": "4/5"
+    },
+    {
+      "timestamp": "2026-05-13 15:37:00",
+      "energy": "4/5",
+      "pain": "2/5",
+      "mode": "deep"
+    },
+    {
+      "timestamp": "2026-05-14 10:42:07",
+      "energy": "2/5",
+      "pain": "1/5",
+      "mode": "rest"
+    },
+    {
+      "timestamp": "2026-05-17 10:09:18",
+      "energy": "3/5",
+      "pain": "2/5",
+      "mode": "rest"
+    }
+  ],
+  "bio_last_checkin": "2026-05-17 10:09:18",
   "qa_rating": "pending",
-  "timestamp": "2026-11-01T07:31:48.012327",
+  "timestamp": "2026-11-01T08:11:24.931251",
   "events_research": {
     "source": "Manual",
-    "researched_at": "2026-11-01T07:31:48.012327"
+    "researched_at": "2026-11-01T08:11:24.931251"
   },
   "next_event": {
     "title": "None within 2hr window",
