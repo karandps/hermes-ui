@@ -39,13 +39,17 @@ _Last updated: {news['timestamp']}_
 def handle_bio_data(update, context):
     """
     Handler for bio tracking data from Telegram WebApp
-    Receives: {"type":"bio","energy":3,"pain":2,"mode":"deep"}
+    Receives: "bio:{\"type\":\"bio\",\"energy\":3,\"pain\":2,\"mode\":\"deep\"}"
     Writes to bio_log.txt
     """
     import json
     query = update.callback_query
     try:
-        data = json.loads(query.data)
+        raw = query.data
+        # Strip "bio:" prefix if present
+        if raw.startswith("bio:"):
+            raw = raw[4:]
+        data = json.loads(raw)
         if data.get('type') != 'bio':
             return
         energy = data.get('energy', '?')
